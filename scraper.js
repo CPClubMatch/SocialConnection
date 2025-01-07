@@ -9,7 +9,8 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
     const url = 'https://now.calpoly.edu/organizations';
     await page.goto(url, { waitUntil: 'networkidle2' });
 
-    let loadMoreButtonSelector = 'div.outlinedButton > button'; // Updated selector for the button
+    //Click the button to load more organizations to get a sheet with all 420 clubs
+    let loadMoreButtonSelector = 'div.outlinedButton > button'; 
     let hasMore = true;
 
     while (hasMore) {
@@ -18,7 +19,7 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
             await page.click(loadMoreButtonSelector);
 
-            await page.waitForTimeout(2000); // Adjust based on the website's speed
+            await page.waitForTimeout(2000); 
         } catch (e) {
             hasMore = false;
         }
