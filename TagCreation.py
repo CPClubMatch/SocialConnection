@@ -2,7 +2,7 @@
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
-# from pywsd.utils import lemmatize_sentence # Commented out because it takes a while to initialize when testing
+#from pywsd.utils import lemmatize_sentence # Commented out because it takes a while to initialize when testing
 from gensim.models import Word2Vec
 
 
@@ -48,8 +48,8 @@ def main(df):
     df['New Club Name'] = df['New Club Name'].apply(preprocessing_names)
     df['New Description'] = df['New Description'].apply(preprocessing_descs)
 
-# main(df)
-# df.to_csv("NewScrapedData.csv")
+#main(df)
+#df.to_csv("NewScrapedData.csv")
 
 
 '''Creating Tags'''
