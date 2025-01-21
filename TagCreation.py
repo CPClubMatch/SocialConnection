@@ -2,7 +2,9 @@
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
+
 # from pywsd.utils import lemmatize_sentence # Comment out when not using because it takes a while to initialize when testing
+
 from gensim.models import Word2Vec
 
 
@@ -67,6 +69,7 @@ def main(df):
 
 # main(df)
 # df.to_csv('NewScrapedData2.csv')
+
 
 
 '''Creating Tags'''
