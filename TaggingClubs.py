@@ -3,13 +3,11 @@ import pandas as pd
 import torch
 from sklearn import preprocessing
 
-
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
-print(DEVICE)
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
-df = pd.read_csv("NicosScrapedData.csv")
 
+df = pd.read_csv("NicosScrapedData.csv")
 club_name = df["Club Name"]
 descriptions = df["Description Excerpt"].to_list()
 
@@ -57,12 +55,9 @@ tag_list = [
 ]
 
 descriptions_embeddings = model.encode(descriptions, show_progress_bar=True, device=DEVICE)
-
 tags_embedding = model.encode(tag_list, show_progress_bar=True, device=DEVICE)
 
 similarity_matrix = model.similarity(descriptions_embeddings, tags_embedding)
-
-
 
 min_max_scaler = preprocessing.MinMaxScaler()
 scaled_similarity_matrix = min_max_scaler.fit_transform(similarity_matrix)
