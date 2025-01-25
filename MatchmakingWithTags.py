@@ -118,18 +118,16 @@ CATEGORY_QUESTIONS = {
 # 2. HELPER FUNCTIONS
 
 def get_user_tags_csv(tags):
-    columns_list = []
-    data = [0] * 40
-    user_tags_dictionary = {(tags.keys())[i] : 0 for i in range(len(tags.keys()))}
-    for value in tags.values():
-        columns_list.append(value[0])
-    
-    print(user_tags_dictionary)
-    user_csv = pd.DataFrame([data], columns=columns_list)
+    columns_list = [value[0] for value in tags.values()]
 
+    user_tags_dictionary = {key : 0 for key in tags.keys()}
     
-    
-get_user_tags_csv(ALL_TAGS)
+    user_csv = pd.DataFrame([user_tags_dictionary], columns=columns_list)
+
+    return user_csv
+
+thingyu = get_user_tags_csv(ALL_TAGS)
+thingyu.to_csv('whoosd.csv')
 
 
 # def load_clubs_from_csv(filename):
