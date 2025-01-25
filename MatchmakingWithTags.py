@@ -117,124 +117,132 @@ CATEGORY_QUESTIONS = {
 
 # 2. HELPER FUNCTIONS
 
-def get_user_tags_csv():
-    user_csv = pd.DataFrame()
-    return 0
+def get_user_tags_csv(tags):
+    columns_list = []
+    data = [0] * 40
+    user_tags_dictionary = {(tags.keys())[i] : 0 for i in range(len(tags.keys()))}
+    for value in tags.values():
+        columns_list.append(value[0])
+    
+    print(user_tags_dictionary)
+    user_csv = pd.DataFrame([data], columns=columns_list)
+
+    
+    
+get_user_tags_csv(ALL_TAGS)
 
 
+# def load_clubs_from_csv(filename):
+#     """Loads clubs from a CSV file."""
+#     clubs = []
+#     with open(filename, mode='r', encoding='utf-8-sig') as f:
+#         reader = csv.reader(f)
+#         for row in reader:
+#             if not row:
+#                 continue
+#             club_name = row[0].strip()
+#             description = row[1].strip()
+#             tag_str = row[2].strip()
+
+#             # Split tags by semicolon or comma
+#             if ";" in tag_str:
+#                 tag_list = [int(x) for x in tag_str.split(";") if x.strip().isdigit()]
+#             else:
+#                 tag_list = [int(x) for x in tag_str.split(",") if x.strip().isdigit()]
+
+#             clubs.append({
+#                 "name": club_name,
+#                 "description": description,
+#                 "tags": tag_list
+#             })
+#     return clubs
+
+# def get_yes_no(prompt):
+#     while True:
+#         answer = input(prompt + " (yes/no): ").strip().lower()
+#         if answer in ['yes', 'y']:
+#             return True
+#         elif answer in ['no', 'n']:
+#             return False
+#         else:
+#             print("Please answer 'yes' or 'no'.")
 
 
-def load_clubs_from_csv(filename):
-    """Loads clubs from a CSV file."""
-    clubs = []
-    with open(filename, mode='r', encoding='utf-8-sig') as f:
-        reader = csv.reader(f)
-        for row in reader:
-            if not row:
-                continue
-            club_name = row[0].strip()
-            description = row[1].strip()
-            tag_str = row[2].strip()
+# def collect_user_tags():
+#     """Collects user responses and returns averaged scores."""
+#     tag_scores = {tag_id: [] for tag_id in ALL_TAGS}  # Start with an empty list for each tag
 
-            # Split tags by semicolon or comma
-            if ";" in tag_str:
-                tag_list = [int(x) for x in tag_str.split(";") if x.strip().isdigit()]
-            else:
-                tag_list = [int(x) for x in tag_str.split(",") if x.strip().isdigit()]
+#     print("\nWelcome to the Club Match Survey! We will ask you questions about various interests.\n")
 
-            clubs.append({
-                "name": club_name,
-                "description": description,
-                "tags": tag_list
-            })
-    return clubs
+#     for category_name, questions in CATEGORY_QUESTIONS.items():
+#         interested = get_yes_no(f"Are you interested in {category_name}?")
+#         if interested:
+#             print(f"\nGreat! Let's see which specific areas of {category_name} interest you...")
+#             for question, tag_ids in questions:
+#                 tag_interested = get_yes_no(question)
+#                 score = 1 if tag_interested else 0
+#                 for tag_id in tag_ids:
+#                     tag_scores[tag_id].append(score)
+#         else:
+#             print(f"\nNo worries, we'll skip {category_name}...\n")
+#             # Assign "no response" (NR) to all tags in this category
+#             for question, tag_ids in questions:
+#                 for tag_id in tag_ids:
+#                     tag_scores[tag_id].append(None)
 
-def get_yes_no(prompt):
-    while True:
-        answer = input(prompt + " (yes/no): ").strip().lower()
-        if answer in ['yes', 'y']:
-            return True
-        elif answer in ['no', 'n']:
-            return False
-        else:
-            print("Please answer 'yes' or 'no'.")
+#     # Process the collected scores: default to 3 for tags with only "NR"
+#     averaged_scores = {}
+#     for tag_id, scores in tag_scores.items():
+#         filtered_scores = [s for s in scores if s is not None]
+#         if not filtered_scores:
+#             averaged_scores[tag_id] = .3  # Default score
+#         else:
+#             averaged_scores[tag_id] = sum(filtered_scores) / len(filtered_scores)
 
+#     return averaged_scores
 
-def collect_user_tags():
-    """Collects user responses and returns averaged scores."""
-    tag_scores = {tag_id: [] for tag_id in ALL_TAGS}  # Start with an empty list for each tag
+# def calculate_similarity(user_scores, club_scores):
+#     """Calculates cosine similarity between user and club scores."""
+#     user_vector = np.array([user_scores[tag_id] for tag_id in ALL_TAGS])
+#     club_vector = np.array([club_scores.get(tag_id, 0) for tag_id in ALL_TAGS])
+#     similarity = cosine_similarity([user_vector], [club_vector])[0][0]
+#     return similarity
 
-    print("\nWelcome to the Club Match Survey! We will ask you questions about various interests.\n")
+# def rank_clubs_by_similarity(clubs, averaged_scores):
+#     """Ranks clubs by similarity to user's scores."""
+#     ranked_clubs = []
+#     for club in clubs:
+#         club_scores = {tag: 10 if tag in club["tags"] else 0 for tag in ALL_TAGS}  # Club's tag scores
+#         similarity = calculate_similarity(averaged_scores, club_scores)
+#         ranked_clubs.append({**club, "similarity": similarity})
 
-    for category_name, questions in CATEGORY_QUESTIONS.items():
-        interested = get_yes_no(f"Are you interested in {category_name}?")
-        if interested:
-            print(f"\nGreat! Let's see which specific areas of {category_name} interest you...")
-            for question, tag_ids in questions:
-                tag_interested = get_yes_no(question)
-                score = 1 if tag_interested else 0
-                for tag_id in tag_ids:
-                    tag_scores[tag_id].append(score)
-        else:
-            print(f"\nNo worries, we'll skip {category_name}...\n")
-            # Assign "no response" (NR) to all tags in this category
-            for question, tag_ids in questions:
-                for tag_id in tag_ids:
-                    tag_scores[tag_id].append(None)
+#     # Sort clubs by similarity, highest first
+#     ranked_clubs.sort(key=lambda c: c["similarity"], reverse=True)
+#     return ranked_clubs[:10]  # Return top 10 clubs
 
-    # Process the collected scores: default to 3 for tags with only "NR"
-    averaged_scores = {}
-    for tag_id, scores in tag_scores.items():
-        filtered_scores = [s for s in scores if s is not None]
-        if not filtered_scores:
-            averaged_scores[tag_id] = .3  # Default score
-        else:
-            averaged_scores[tag_id] = sum(filtered_scores) / len(filtered_scores)
+# # 3. MAIN SCRIPT
+# def main():
+#     # Load clubs from CSV
+#     csv_filename = "clubs.csv"
+#     clubs = load_clubs_from_csv(csv_filename)
 
-    return averaged_scores
+#     # Collect user responses and scores
+#     averaged_scores = collect_user_tags()
 
-def calculate_similarity(user_scores, club_scores):
-    """Calculates cosine similarity between user and club scores."""
-    user_vector = np.array([user_scores[tag_id] for tag_id in ALL_TAGS])
-    club_vector = np.array([club_scores.get(tag_id, 0) for tag_id in ALL_TAGS])
-    similarity = cosine_similarity([user_vector], [club_vector])[0][0]
-    return similarity
+#     print("\nSurvey complete! Here's how you scored for each tag:")
+#     for tag_id, score in sorted(averaged_scores.items()):
+#         print(f"  - {tag_id}: {ALL_TAGS[tag_id]} => Score: {score:.2f}")
 
-def rank_clubs_by_similarity(clubs, averaged_scores):
-    """Ranks clubs by similarity to user's scores."""
-    ranked_clubs = []
-    for club in clubs:
-        club_scores = {tag: 10 if tag in club["tags"] else 0 for tag in ALL_TAGS}  # Club's tag scores
-        similarity = calculate_similarity(averaged_scores, club_scores)
-        ranked_clubs.append({**club, "similarity": similarity})
+#     # Rank clubs by similarity
+#     matched_clubs = rank_clubs_by_similarity(clubs, averaged_scores)
 
-    # Sort clubs by similarity, highest first
-    ranked_clubs.sort(key=lambda c: c["similarity"], reverse=True)
-    return ranked_clubs[:10]  # Return top 10 clubs
+#     # Display the top 10 most similar clubs
+#     print("\nHere are the top 10 clubs that match your interests:")
+#     for club in matched_clubs:
+#         print(f"\nClub: {club['name']}")
+#         print(f"Description: {club['description']}")
+#         print(f"Similarity Score: {club['similarity']:.4f}")
+#         print("Tags: ", ", ".join([ALL_TAGS[tag] for tag in club["tags"]]))
 
-# 3. MAIN SCRIPT
-def main():
-    # Load clubs from CSV
-    csv_filename = "clubs.csv"
-    clubs = load_clubs_from_csv(csv_filename)
-
-    # Collect user responses and scores
-    averaged_scores = collect_user_tags()
-
-    print("\nSurvey complete! Here's how you scored for each tag:")
-    for tag_id, score in sorted(averaged_scores.items()):
-        print(f"  - {tag_id}: {ALL_TAGS[tag_id]} => Score: {score:.2f}")
-
-    # Rank clubs by similarity
-    matched_clubs = rank_clubs_by_similarity(clubs, averaged_scores)
-
-    # Display the top 10 most similar clubs
-    print("\nHere are the top 10 clubs that match your interests:")
-    for club in matched_clubs:
-        print(f"\nClub: {club['name']}")
-        print(f"Description: {club['description']}")
-        print(f"Similarity Score: {club['similarity']:.4f}")
-        print("Tags: ", ", ".join([ALL_TAGS[tag] for tag in club["tags"]]))
-
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
