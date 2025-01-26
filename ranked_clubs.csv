@@ -1,445 +1,128 @@
 ,Club Name,similarity
-0,Associated Students in Planning,0.7559289460184545
-1,Women in Physics,0.7262730392025629
-2,Computing Research Society,0.629940788348712
-3,Design Lab,0.5819143739626463
-4,With Us,0.5819143739626463
-5,Association for Materials Protection and Performance - Cal Poly Chapter,0.5345224838248488
-6,Cal Poly Women in Business Association,0.5345224838248488
-7,Lambda Chi Alpha - Phi Sigma Zeta,0.5345224838248488
-8,Marine Sciences,0.5345224838248488
-9,Sigma Nu Kappa Pi Chapter,0.5345224838248488
-10,TRIO Achievers,0.5345224838248488
-11,Alpha Pi Mu at Cal Poly,0.5039526306789697
-12,Alpha Tau Alpha,0.5039526306789697
-13,Cal Poly 3D Printed Aircraft Club,0.5039526306789697
-14,Chi Sigma chapter of Phi Sigma Iota,0.5039526306789697
-15,Computer Science and Artificial Intelligence,0.5039526306789697
-16,Eta-Delta Chapter of Sigma Pi Fraternity,0.5039526306789697
-17,"Gamma Phi Beta, Delta Theta Chapter",0.5039526306789697
-18,Genetics and Genomics Club,0.5039526306789697
-19,Kappa Kappa Gamma,0.5039526306789697
-20,PUENTE @ Cal Poly,0.5039526306789697
-21,SIGMA KAPPA SORORITY Epsilon Omega,0.5039526306789697
-22,Sigma Omega Chapter of Alpha Epsilon Pi,0.5039526306789697
-23,Sigma Pi Sigma,0.5039526306789697
-24,Society of American Foresters,0.5039526306789697
-25,Society of Physics Students of Cal Poly,0.5039526306789697
-26,The Nu-Alpha chapter of Kappa Sigma,0.5039526306789697
-27,Veritas Forum at Cal Poly,0.5039526306789697
-28,Guardian Scholars,0.48418202613504197
-29,Pride Center (LGBTQIA2S),0.48418202613504197
-30,Sigma Alpha,0.48418202613504197
-31,Cal Poly Data Science Club,0.44543540318737407
-32,Cal Poly Tech Sales Club,0.44543540318737407
-33,Cal Poly Entrepreneurs,0.4364357804719847
-34,"College of Agriculture, Food, and Environmental Sciences Student Council",0.4364357804719847
-35,Mechanical Contractors Association of America,0.4364357804719847
-36,Color Coded,0.3944053188733077
-37,Cal Poly Counter-Strike Club,0.37796447300922725
-38,Cal Poly TAGA Club,0.37796447300922725
-39,Delta Sigma Pi Kappa Mu Chapter,0.37796447300922725
-40,National Electrical Contractors Association,0.37796447300922725
-41,Power and Energy Society,0.37796447300922725
-42,Tractor Pull Club,0.37796447300922725
-43,Alpha Sigma Mu,0.363696483726654
-44,BMED Graduate Student Club,0.36313651960128146
-45,Cal Poly Theisms Club,0.36313651960128146
-46,Industrial Technology Society,0.36313651960128146
-47,The Garden Club,0.36313651960128146
-48,Women in Law,0.36313651960128146
-49,Cal Poly Accounting Club,0.35634832254989923
-50,Cal Poly Consulting Club,0.35634832254989923
-51,Cal Poly Economics Society,0.35634832254989923
-52,Colleges Against Cancer,0.35634832254989923
-53,Future Math Educators Club,0.35634832254989923
-54,Mustang Aviation,0.35634832254989923
-55,National Marrow Donor Program,0.35634832254989923
-56,Philosophy Club,0.35634832254989923
-57,Quantitative Analysis Concentration Club,0.35634832254989923
-58,Sigma Phi Epsilon California Tau,0.35634832254989923
-59,Theta Tau,0.35634832254989923
-60,Women's Club Basketball,0.35634832254989923
-61,Women's Soccer,0.35634832254989923
-62,Cal Poly RFID and IOT Club,0.3499271061118826
-63,Hiking and Backpacking Club,0.3499271061118826
-64,Men and Masculinities Program (MnM),0.3499271061118826
-65,"Associated Students, Inc. (ASI)",0.3273268353539886
-66,Black Academic Excellence Center (BAEC),0.3086066999241839
-67,Agribusiness Management/National Agri-Marketing Association Club,0.29095718698132317
-68,Asexual Association,0.29095718698132317
-69,Association for Women in Mathematics - Cal Poly Student Chapter,0.29095718698132317
-70,Cognitive Neuroscience Club,0.29095718698132317
-71,Cal Poly Field Studies Club,0.29095718698132317
-72,Cal Poly Scholars,0.29095718698132317
-73,Cal Poly Student Veterans and Dependents Club,0.29095718698132317
-74,Cal Poly Women's Club Baseball,0.29095718698132317
-75,Dream Center,0.29095718698132317
-76,Engineering Student Council,0.29095718698132317
-77,Environmental Sciences Club,0.29095718698132317
-78,Food Science Club,0.29095718698132317
-79,Gender-Inclusive Gaming,0.29095718698132317
-80,Her Campus at Cal Poly,0.29095718698132317
-81,Ignite Consulting Junior Enterprise,0.29095718698132317
-82,Plant Futures Club,0.29095718698132317
-83,Students for Life at Cal Poly,0.29095718698132317
-84,Students with Dependents (DOS),0.29095718698132317
-85,"The Cal Poly chapter, the Epsilon Delta of Beta Theta Pi",0.29095718698132317
-86,Theta Alpha chapter of Delta Gamma Fraternity,0.29095718698132317
-87,Week of Welcome,0.29095718698132317
-88,Sigma Phi Delta,0.2817180849095055
-89,Analogue Design Lab,0.2672612419124244
-90,Association of Transfer Students,0.2672612419124244
-91,Society of Manufacturing Engineers,0.2672612419124244
-92,"American Society of Heating, Refrigerating and Air-Conditioning Engineers",0.25197631533948484
-93,"Alpha Chi Sigma, Gamma Zeta Chapter",0.25197631533948484
-94,alpha Kappa Delta Phi,0.25197631533948484
-95,Alpha Omega Epsilon,0.25197631533948484
-96,Alpha Sigma Phi Iota Chi (ΑΣΦ IX),0.25197631533948484
-97,American Chemical Society,0.25197631533948484
-98,Associated General Contractors,0.25197631533948484
-99,AWS Cloud Club Cal Poly,0.25197631533948484
-100,"Beta Lambda Chapter of Alpha Epsilon Phi Sorority, Incorporated",0.25197631533948484
-101,Biotechnology Club,0.25197631533948484
-102,Blockchain at Cal Poly,0.25197631533948484
-103,"CAED Diversity, Equity, and Inclusion Club",0.25197631533948484
-104,Cal Poly Astronomical Society,0.25197631533948484
-105,Cal Poly CalGeo Club,0.25197631533948484
-106,Cal Poly Club Baseball,0.25197631533948484
-107,Cal Poly Coptic Club,0.25197631533948484
-108,Cal Poly Cricket Club,0.25197631533948484
-109,Cal Poly Film Club,0.25197631533948484
-110,Cal Poly Furniture Design Club,0.25197631533948484
-111,Cal Poly Geography Club,0.25197631533948484
-112,Cal Poly ISLA Club,0.25197631533948484
-113,Cal Poly Marksmanship Club,0.25197631533948484
-114,Cal Poly Mycology Club,0.25197631533948484
-115,Cal Poly Real Estate Club,0.25197631533948484
-116,Cal Poly Red Cross Club,0.25197631533948484
-117,Cal Poly Sociology Club,0.25197631533948484
-118,Cal Poly Unicycle Club,0.25197631533948484
-119,Cal Poly Women's Club Volleyball,0.25197631533948484
-120,Cal Poly Women's Club Water Polo,0.25197631533948484
-121,Cal Poly Women's Lacrosse Team,0.25197631533948484
-122,Cal Poly Wrestling Club,0.25197631533948484
-123,Campus Health & Wellbeing,0.25197631533948484
-124,Chabad Student Group,0.25197631533948484
-125,Chi Epsilon Honor Society,0.25197631533948484
-126,Delta Chi,0.25197631533948484
-127,Epsilon Chi Chapter of Alpha Phi International Fraternity Incorporated,0.25197631533948484
-128,Eta Septaton Chapter Phi Sigma Kappa,0.25197631533948484
-129,External Relations,0.25197631533948484
-130,Graduate Student Association,0.25197631533948484
-131,Graduate Unified ARCE Club,0.25197631533948484
-132,Japanese Student Association,0.25197631533948484
-133,"Kappa Alpha Theta, Zeta Theta",0.25197631533948484
-134,Kappa Kappa Psi - Iota Pi,0.25197631533948484
-135,"Kappa Pi Associate Chapter of Pi Kappa Phi Fraternity, located at Cal Poly",0.25197631533948484
-136,Lambda Sigma Gamma,0.25197631533948484
-137,"Lambda Theta Phi Latin Fraternity, Inc.",0.25197631533948484
-138,Latinx Business Student Association,0.25197631533948484
-139,Mat Pica Pi,0.25197631533948484
-140,Math Club,0.25197631533948484
-141,Men's Health & Wellbeing Club,0.25197631533948484
-142,Muslim Students Association,0.25197631533948484
-143,Mustangs for Recovery,0.25197631533948484
-144,Nuclear is Clean Energy,0.25197631533948484
-145,Order of Omega,0.25197631533948484
-146,Parent and Family Programs,0.25197631533948484
-147,Phi Delta Theta Fraternity - California Nu Chapter,0.25197631533948484
-148,Phi Gamma Delta,0.25197631533948484
-149,Pi Alpha Xi,0.25197631533948484
-150,Political Science Club,0.25197631533948484
-151,PolyGoats Four-Wheel Drive Club,0.25197631533948484
-152,PULSE,0.25197631533948484
-153,Sigma Omega Nu,0.25197631533948484
-154,SLO Hacks,0.25197631533948484
-155,Smile and Nod,0.25197631533948484
-156,Structural Engineers Association of California Cal Poly Student Chapter,0.25197631533948484
-157,The Cal Poly Pre-Law Chapter,0.25197631533948484
-158,The Liberal Studies Student Association,0.25197631533948484
-159,Women Involved in Software and Hardware,0.25197631533948484
-160,Women's Ultimate Frisbee,0.25197631533948484
-161,"Xi Xi Chapter of Zeta Phi Beta Sorority, Incorporated",0.25197631533948484
-162,Zeta Beta Tau Fraternity Eta Mu Chapter,0.25197631533948484
-163,Zeta Phi Chapter of Theta Chi Fraternity,0.25197631533948484
-164,Gamma Zeta Alpha Fraternity Inc. - Omicron Chapter,0.25197631533948484
-165,Cal Poly Quantitative Finance Club,0.24209101306752098
-166,Educational Opportunity Program (EOP),0.24209101306752098
-167,Gender Equity Center (GEC),0.24209101306752098
-168,Hack4Impact,0.24209101306752098
-169,MESS,0.24209101306752098
-170,Minorities in Physics,0.24209101306752098
-171,Women Empowered,0.24209101306752098
-172,Women in Finance,0.24209101306752098
-173,Cal Poly Crops Club,0.23328473740792174
-174,Disability Alliance,0.23328473740792174
-175,Horticulture Club,0.2253744679276044
-176,Students for Immigration Justice,0.2253744679276044
-177,Agricultural Communicators of Tomorrow,0.2182178902359924
-178,Real Food Collaborative,0.2182178902359924
-179,Society of Environmental Engineers,0.2182178902359924
-180,AACF (Asian American Christian Fellowship),0.17817416127494962
-181,American Institute of Aeronautics and Astronautics,0.17817416127494962
-182,Associated Students of Construction Management,0.17817416127494962
-183,AWWA Cal Poly San Luis Obispo,0.17817416127494962
-184,Cal Poly Animation Club,0.17817416127494962
-185,Cal Poly Archaeology Club,0.17817416127494962
-186,Cal Poly Investing Club,0.17817416127494962
-187,Cal Poly Product Management Club,0.17817416127494962
-188,Cal Poly Surfrider Foundation,0.17817416127494962
-189,Cal Poly Textile Engineering Club,0.17817416127494962
-190,Chi Psi Chapter of Alpha Omicron Pi,0.17817416127494962
-191,Comparative Ethnic Studies Student Association,0.17817416127494962
-192,Computing Club Collaborative,0.17817416127494962
-193,Delight Ministries at Cal Poly,0.17817416127494962
-194,Disability Resource Center,0.17817416127494962
-195,Eco Reps,0.17817416127494962
-196,Information Systems Association,0.17817416127494962
-197,Institute of Transportation Engineers (ITE),0.17817416127494962
-198,Lambda Pi Eta,0.17817416127494962
-199,MBA Student Association,0.17817416127494962
-200,Mustang Consulting at Cal Poly,0.17817416127494962
-201,Newman Catholic Club,0.17817416127494962
-202,Phi Alpha Theta at Cal Poly,0.17817416127494962
-203,Public Health Club,0.17817416127494962
-204,Quantum Computing Club,0.17817416127494962
-205,Regeneration Field Institute in San Luis Obispo,0.17817416127494962
-206,STAT Club,0.17817416127494962
-207,Systems Optimization Club,0.17817416127494962
-208,That's the Key,0.17817416127494962
-209,The Honor Society of Sigma Lambda Alpha,0.17817416127494962
-210,Veterinary Science Club,0.17817416127494962
-211,Zoo and Exotic Animal Careers Club,0.17817416127494962
-212,"American Society of Landscape Architecture, Student Chapter",0.14547859349066158
-213,Biomedical Engineering Society,0.14547859349066158
-214,Cal Poly Public Policy Club,0.14547859349066158
-215,Delta Upsilon,0.14547859349066158
-216,Educators of Color,0.14547859349066158
-217,International Student Friendship,0.14547859349066158
-218,Life Skills Program,0.14547859349066158
-219,Men's Volleyball,0.14547859349066158
-220,"Out in Science, Technology, Engineering, and Mathematics (oSTEM)",0.14547859349066158
-221,Cal Poly Computer Engineering Society,0.12598815766974242
-222,Google Developer Student Clubs,0.12598815766974242
-223,Institute of Industrial and Systems Engineers,0.12598815766974242
-224,iter8 at Cal Poly,0.12598815766974242
-225,Pilipino Cultural Exchange,0.12598815766974242
-226,Society of Women Engineers,0.12598815766974242
-227,Taiwanese American Student Association,0.12598815766974242
-228,Tau Beta Pi,0.12598815766974242
-229,Thrift Cal Poly Club,0.12598815766974242
-230,"Alpha Phi Omega, Zeta Omicron Chapter",0.12104550653376049
-231,Cal Poly Audio Engineering Society,0.12104550653376049
-232,Cal Poly Juggling Club,0.12104550653376049
-233,Net Impact,0.12104550653376049
-234,The Creative Anatomy Club,0.12104550653376049
-235,Cal Poly Urbanists Club,0.11664236870396087
-236,Sustainable Fashion Club,0.11664236870396087
-237,Students for Justice in Palestine,0.1126872339638022
-238,Liberal Arts and Engineering Studies,0.10585122480499264
-239,Cal Poly Investment Banking Club,0.08908708063747481
-240,CORE,0.08908708063747481
-241,Women in Mechanical Engineering,0.08908708063747481
-242,Career Services,0.07273929674533079
-243,Engineers for Global Cultural Awareness,0.07273929674533079
-244,Eta Kappa Nu,0.07273929674533079
-245,Industrial Designers Society of America at Cal Poly,0.058321184351980436
-246,Advertising Club,0.0
-247,Agricultural Engineering Society,0.0
-248,Agricultural Leadership Society,0.0
-249,Alpha Kappa Psi Professional Business Fraternity,0.0
-250,American Indian Students Association,0.0
-251,American Institute of Architecture Students,0.0
-252,American Marketing Association,0.0
-253,American Sign Language Club,0.0
-254,Argentine Cultural Society at Cal Poly,0.0
-255,Armenian Students Association,0.0
-256,Association of Environmental Professionals,0.0
-257,Badminton Club,0.0
-258,Baha'i Club at Cal Poly,0.0
-259,Best Buddies,0.0
-260,Black Student Union,0.0
-261,Burmese Student Association,0.0
-262,Cal Poly Alpine Club,0.0
-263,Cal Poly Amateur Radio Club,0.0
-264,Cal Poly American Medical Student Association,0.0
-265,Cal Poly Andaaz Club,0.0
-266,Cal Poly Archery Club,0.0
-267,Cal Poly Ballroom Dance Club,0.0
-268,Cal Poly Barbell Club,0.0
-269,Cal Poly Bowling Club,0.0
-270,Cal Poly CHAARG,0.0
-271,Cal Poly Chess Club,0.0
-272,Cal Poly Classical Literature Book Club,0.0
-273,Cal Poly Climbing Club,0.0
-274,Cal Poly Club Field Hockey,0.0
-275,Cal Poly College Republican Club,0.0
-276,Cal Poly Communication Studies Club,0.0
-277,Cal Poly Cycling Team,0.0
-278,Cal Poly Democrats Club,0.0
-279,Cal Poly Disc Golf Club,0.0
-280,Cal Poly Distance Club,0.0
-281,Cal Poly Ducks Unlimited Club,0.0
-282,Cal Poly Fencing Club,0.0
-283,Cal Poly Fiber Arts Club,0.0
-284,Cal Poly Fighting Game Club,0.0
-285,Cal Poly Food Recovery Network Club,0.0
-286,Cal Poly Game Development Club,0.0
-287,Cal Poly Jump Rope Club,0.0
-288,Cal Poly Kaaram Dance Club,0.0
-289,Cal Poly League of Legends Club,0.0
-290,Cal Poly Linux Users Group,0.0
-291,Cal Poly Lore Club,0.0
-292,Cal Poly Magic the Gathering Club,0.0
-293,Cal Poly Men's Beach Volleyball Club,0.0
-294,Cal Poly Men's Lacrosse Club,0.0
-295,Cal Poly Men's Ultimate Club,0.0
-296,Cal Poly MERGE Contemporary Dance Club,0.0
-297,Cal Poly Miracle Club,0.0
-298,Cal Poly Moot Court Club,0.0
-299,Cal Poly Multiracial Students' Association,0.0
-300,Cal Poly National Organization of Minority Architect Students,0.0
-301,Cal Poly Nursing / PA Club,0.0
-302,Cal Poly Photography Club,0.0
-303,Cal Poly Pickleball Club,0.0
-304,Cal Poly Pre-Dental Society,0.0
-305,Cal Poly Psi Chi Chapter,0.0
-306,Cal Poly Roundnet Club,0.0
-307,Cal Poly Rowing Club,0.0
-308,Cal Poly Rugby Club,0.0
-309,Cal Poly Salsa Club,0.0
-310,Cal Poly Security Education Club,0.0
-311,Cal Poly SLOverwatch Club,0.0
-312,Cal Poly South Indian Cultural Club,0.0
-313,Cal Poly Survivor Club,0.0
-314,Cal Poly Swim Club,0.0
-315,Cal Poly Swing Club,0.0
-316,Cal Poly Table Tennis Club,0.0
-317,Cal Poly Valorant Club,0.0
-318,Cal Poly Van Life Club,0.0
-319,Cal Poly Water Ski Team,0.0
-320,Cal Poly Yoga Club,0.0
-321,Cal Poly Yu-Gi-Oh! Club,0.0
-322,"California Polytechnic State University, San Luis Obispo Student Chapter of The Wildlife Society",0.0
-323,Camellia Club,0.0
-324,Camp PolyHacks,0.0
-325,Can of Worms Comedy Club,0.0
-326,Center for Leadership,0.0
-327,Center for Service in Action,0.0
-328,"Chi Delta Theta Sorority, Incorporated",0.0
-329,Chinese Students' Association,0.0
-330,Christian Students,0.0
-331,Club 34,0.0
-332,Club Tennis,0.0
-333,College Corps Service Opportunities,0.0
-334,Country Line Dancing Club,0.0
-335,Cal Poly Drag Club,0.0
-336,Cru,0.0
-337,Delta Sigma Phi - Epsilon Rho Chapter,0.0
-338,Design Village,0.0
-339,Diversity & Inclusion,0.0
-340,Dragon Boating Outreach Club,0.0
-341,EIM Club,0.0
-342,End Overdose at Cal Poly,0.0
-343,Epic Movement,0.0
-344,Epsilon Omega Chapter of Alpha Chi Omega,0.0
-345,Esports Council,0.0
-346,"Fashion, Innovation, Trendsetting, and Styling Club",0.0
-347,Financial Management Association,0.0
-348,French Language Club,0.0
-349,Friday Night Live,0.0
-350,Furries at Cal Poly,0.0
-351,GenKEY Sound Collective,0.0
-352,GrowCrew,0.0
-353,Hillel of San Luis Obispo,0.0
-354,Hindu YUVA,0.0
-355,Hui O Hawai'i,0.0
-356,Human Resource Management Club,0.0
-357,Hummus Club,0.0
-358,Imagen y Espiritu Ballet Folklorico de Cal Poly,0.0
-359,Indian Students Association,0.0
-360,InterVarsity Christian Fellowship San Luis Obispo,0.0
-361,Iranian Student Cultural Organization,0.0
-362,Italian Cultural Association,0.0
-363,Journalists of Color @ Cal Poly,0.0
-364,Kesem at Cal Poly,0.0
-365,Kaja Krew,0.0
-366,Latine/x Center For Academic Success and Student Achievement (LaCASA),0.0
-367,Latinos in Agriculture,0.0
-368,Latinx Cultural Association,0.0
-369,Learn by Doing Good Awards,0.0
-370,Letters of Love,0.0
-371,Los Lecheros Dairy Club,0.0
-372,Men's Club Basketball,0.0
-373,Men's Soccer Club,0.0
-374,Men's Water Polo Club,0.0
-375,Mercy College Movement,0.0
-376,Military Science Club,0.0
-377,Minna No Anime,0.0
-378,Movimiento Estudiantil Xicano de Aztlan (MEXA),0.0
-379,MultiCultural Center (MCC),0.0
-380,Music Appreciation Club,0.0
-381,Music Production Union,0.0
-382,Mustang Band Club,0.0
-383,Mustang Surf Club,0.0
-384,Mustangs United for Israel,0.0
-385,National Association of Minority Landscape Architects,0.0
-386,National Society of Black Engineers,0.0
-387,Native American and Indigenous Cultural Center (NAICC),0.0
-388,New Student & Transition Programs,0.0
-389,Nikkei Student Union,0.0
-390,Nutrition Club,0.0
-391,Omicron Mu Chapter of the Chi Omega Fraternity,0.0
-392,One Health Club,0.0
-393,Orthodox Christian Fellowship,0.0
-394,Penguins Motorcycle Club,0.0
-395,Phi Kappa Psi California Eta,0.0
-396,Planned Parenthood Generation Action,0.0
-397,"Plants, Peaks, Pals",0.0
-398,Pokémon TCG & VG Club,0.0
-399,Poly Child Development Club,0.0
-400,Poly Pack,0.0
-401,Poly Pups,0.0
-402,PolyCon Tabletop Gaming,0.0
-403,Pre-Optometry Club,0.0
-404,Project Sunshine,0.0
-405,Physical Therapy and Occupational Therapy Club,0.0
-406,Rho Phi Lambda,0.0
-407,Roller Hockey,0.0
-408,Russian Speaking Association,0.0
-409,Safer,0.0
-410,Sailing Team,0.0
-411,Sales Engineering Club,0.0
-412,SGI-USA Buddhism,0.0
-413,SHPE,0.0
-414,Sikh Student Association,0.0
-415,SLO Breakers,0.0
-416,SLO Climate Coalition Cal Poly Club,0.0
-417,SLO Smash Community,0.0
-418,Society for the Advancement of Material & Process Engineering,0.0
-419,Society of Civil Engineers,0.0
-420,South Asian Student Association,0.0
-421,Spanish Club,0.0
-422,Sprout Up,0.0
-423,Student Association for Fire Ecology,0.0
-424,Student Diversity and Belonging,0.0
-425,Students' Stage,0.0
-426,Studio Art Club,0.0
-427,Take it SLO,0.0
-428,Thai Vietnamese Student Association,0.0
-429,The Cal Poly Triathlon Team,0.0
-430,The Heard at Cal Poly,0.0
-431,The Majesties,0.0
-432,The Nightcap,0.0
-433,The Writers' Collective,0.0
-434,Transgender & Queer Student Union,0.0
-435,Turning Point USA at Cal Poly,0.0
-436,Undergraduate Law Association,0.0
-437,United Movement,0.0
-438,UX Fest SLO,0.0
-439,Women in Construction,0.0
-440,Women's Outdoor Adventure Club: Backcountry Squatters,0.0
-441,Womens Club Beach Volleyball,0.0
-442,Young Democratic Socialists of America at Cal Poly,0.0
-443,YoungLife,0.0
+0,Computing Research Society,0.7859852750917213
+1,Bio-Cheminformatics Club,0.7856680442702817
+2,Quantitative Analysis Concentration Club,0.7617898393301364
+3,Marine Sciences Club,0.755401371307549
+4,Military Science Club,0.7492324723011423
+5,Biotechnology Club,0.7240679803145181
+6,Industrial Technology Society,0.660186553302532
+7,Cal Poly Entrepreneurs,0.6590019467657652
+8,Computer Engineering Society (CPES),0.6503749270358853
+9,Association of Transfer Students,0.6484762037960665
+10,Cal Poly Tech Sales,0.6390302586520737
+11,Cal Poly Cognitive Neuroscience,0.6324562192794674
+12,American Chemical Society,0.629304564171143
+13,Communications Studies Club,0.6282402856123411
+14,Association for Materials Protection and Performance - Cal Poly Chapter,0.625763912938052
+15,Society of Hispanic Professional Engineers (SHPE),0.6138425685138201
+16,SHPE,0.6114615940467102
+17,Panhellenic Association Board,0.6083637210133965
+18,Cal Poly Real Estate Club,0.608258283256993
+19,The National Society of Leadership and Success,0.6048335168469612
+20,Philosophy Club,0.6012438413543741
+21,Cal Poly Accounting Club,0.6006824933560255
+22,Cal Poly Sociology Club,0.6004371174563821
+23,Computer Science and Artificial Intelligence Club,0.5934389678827126
+24,One Health Club,0.5883295911023214
+25,Cal Poly Economics Society,0.5858745072054762
+26,American Marketing Association,0.5692405063832339
+27,Theta Chi,0.5689847317683958
+28,SAMPE (Society for the Advancement of Material and Process Engineering),0.567063294704089
+29,The Women’s Network,0.5666059378936157
+30,Cal Poly Rowing,0.5596689119156433
+31,Esports Council,0.5550323864100168
+32,Disability Alliance,0.5492602874383959
+33,Chabad Student Group,0.5459970344870394
+34,SLO Campus Ministry Pop Up: An Open and Affirming Campus Ministry,0.5421324927149832
+35,InterVarsity Christian Fellowship,0.5384743760705601
+36,Color Coded,0.5368190927458926
+37,Thrift Cal Poly,0.5351349981366502
+38,Cal Poly Undergraduate Law Association,0.5330395934310468
+39,Cal Poly Quantitative Finance Club,0.5285034816147228
+40,Students for Life at Cal Poly,0.5267214982379317
+41,Womxn in Mechanical Engineering,0.5263771929785472
+42,Military Science Club,0.5245386508092
+43,Puente @ Cal Poly,0.5214852306912412
+44,Cal Poly Nursing & PA Club,0.5169357763453502
+45,SLO Climate Coalition Cal Poly Club,0.5109983599025345
+46,Multiracial Students Association,0.5065915814807439
+47,Italian Cultural Association,0.5061611617375859
+48,Simple Club,0.5052188970244615
+49,BMES,0.5041298705666025
+50,Cal Poly Theisms,0.5009284370879499
+51,Environmental Sciences Club,0.5002111890222491
+52,Sales Engineering Club,0.4936565408652073
+53,Chi Omega Chapter of Phi Sigma Iota Foreign Language Honor Society,0.4893996443157176
+54,Cal Poly Amateur Radio Club,0.48362564775990136
+55,Engineers Without Borders,0.4827921768118637
+56,Military science club,0.4820250038945163
+57,PolyCon Tabletop Gaming,0.48049312115102266
+58,Nuclear is Clean Energy,0.479284438436939
+59,Russian Speaking Association,0.4769030962538656
+60,The Cal Poly Triathlon Club,0.4740262399971312
+61,Cal Poly Animation Club,0.4598001310543899
+62,Analogue Design Lab,0.4585464316301604
+63,Society of Women Engineers,0.4572661102529978
+64,Cal Poly Society of Women Engineers,0.4572661102529978
+65,Iran Student Cultural Organization,0.45493852377196664
+66,Phi Sigma Kappa,0.4535261320609038
+67,Sailing Team,0.45036587213373536
+68,Latinx Cultural Association,0.4501746870061073
+69,Cal Poly Counter Strike Club,0.44471989581652727
+70,Cal Poly Cricket Club,0.44280784435593457
+71,Cal Poly SLOverwatch Club,0.4412208115555838
+72,Field Studies Club,0.4395871878140241
+73,Poly Pack,0.4372486237971891
+74,"Out in Science, Technology, Engineering, and Mathematics (oSTEM)",0.4357124697000253
+75,Information Systems Association (ISA),0.43298696799227554
+76,Cal Poly Fencing Club,0.43124350500201375
+77,Cal Poly Van Life,0.4300788128035732
+78,Cal Poly Red Cross Club,0.42521162472402574
+79,Waterski,0.42140279589771856
+80,CP Lore Club,0.4142136924058622
+81,Xi Xi Chapter of Zeta Phi Beta Sorority Incorporated,0.41166244018409814
+82,Archaeology Club,0.4100741350142375
+83,Pilipino Cultural Exchange,0.4093805927876572
+84,Association for Women in Math,0.4044101749880599
+85,South Asian Student Association,0.40267566732496063
+86,Pi Kappa Phi,0.40195616686000923
+87,American Sign Language Club,0.39842835315464054
+88,Cal Poly Cycling,0.39838049686208776
+89,Alpha Phi Omega,0.39311033836953657
+90,Newman Catholic Club,0.3927148313355767
+91,The Writers' Collective,0.38299346349002306
+92,Indian Students Association,0.3814435834102973
+93,Cal Poly Political Science Club,0.3808588032488971
+94,Colleges Against Cancer,0.37708673843841856
+95,Undergraduate Law Association,0.37697336563689643
+96,Letters of Love SLO,0.37599089289830795
+97,Cal Poly Settlers of Catan,0.3758361672922245
+98,Trans Queer Student Union,0.37060232351553335
+99,Public Health Club,0.3625516206073086
+100,Can of worms comedy club,0.3553328350093091
+101,Cal Poly Salsa Club,0.3547510098783644
+102,Dragon Boating Outreach Club,0.3535186235395982
+103,Cal Poly Survivor Club,0.3476687697640343
+104,Cal Poly Textile Engineering Club,0.34588352326635013
+105,Backcountry Squatters at Cal Poly,0.34561456007680047
+106,Women Empowered,0.3442889129682784
+107,Argentine Cultural Society at Cal Poly,0.3393953644630464
+108,Cal Poly Pickleball Clun,0.3386341582260286
+109,Men’s Health & Wellbeing Club,0.3371268940504538
+110,Cal Poly Archery Club,0.33432769482593433
+111,Cal Poly Fiber Arts Club,0.33114770530791093
+112,Sustainable Fashion Club,0.32754193889281447
+113,Turning Point USA at Cal Poly,0.3242405492756706
+114,Epic Movement,0.31998002805366393
+115,Swing Club,0.3150998534032954
+116,CP Drag Club,0.3138761674835243
+117,Cal Poly Hiking and Backpacking Club,0.3109157479872039
+118,Furries at Cal Poly,0.29879151937148446
+119,Cru,0.29790080806712715
+120,Kappa Alpha Theta,0.2962646868654658
+121,Christian Students on Campus,0.2798646071911314
+122,Cal Poly Country Line Dancing Club,0.2773550792095434
+123,SLOBreakers,0.2770515183798537
+124,Kesem at Cal Poly,0.24630724198047502
+125,Cal Poly Ballroom,0.24615355758062
+126,Cal Poly Unicycle Club,0.1810345802082715

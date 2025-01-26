@@ -108,8 +108,8 @@ CATEGORY_QUESTIONS = {
         ("Do you enjoy learning about and experiencing other cultures?", [8, 23]),
         ("Are you passionate about promoting equity and inclusion on campus?", [8, 24, 21]),
         ("Would you like to join a club that focuses on multicultural events?", [8, 9, 23]),
-        ("Are you interested in joining clubs that celebrate specific heritages?", [8, 34]),
-        ("Do you enjoy participating in activities that bring diverse groups together?", [8, 9, 24]),
+        ("Are you interested in joining clubs that celebrate specific heritages?", [8, 24]),
+        ("Do you enjoy participating in activities that bring diverse groups together?", [8, 9, 34]),
         ("Would you like to explore clubs focused on international connections?", [8, 23]),
         ("Are you passionate about addressing issues of social justice?", [8, 21, 24])
     ]
@@ -157,6 +157,7 @@ def get_user_tags_df(tags, questions):
 
     user_df = pd.DataFrame(user_tags_dictionary.values()).transpose()
     user_df.columns = columns_list  
+    user_df.to_csv("user_scores.csv", index=False)
     return user_df
 
 def calc_user_tag_scores(user_tags_dictionary, tags_with_parents_dictionary):
@@ -178,15 +179,15 @@ def calc_user_tag_scores(user_tags_dictionary, tags_with_parents_dictionary):
         if average_tag < average_parent: #average less than parent tag of current tag
             average_tag = (average_tag+average_parent)/2
         
-        if average_tag == 1 and len(list_of_responses) >= 1:
-            average_tag = 2
-        elif average_tag >= 0.7 and len(list_of_responses) >= 1:
-            average_tag = 1
-        else:
-            average_tag = 0
-
         # if average_tag == 1 and len(list_of_responses) >= 1:
         #     average_tag = 2
+        # elif average_tag >= 0.7 and len(list_of_responses) >= 1:
+        #     average_tag = 1
+        # else:
+        #     average_tag = 0
+
+        if average_tag == 1 and len(list_of_responses) >= 1:
+            average_tag = 2
         # elif average_tag >= 0.6 and len(list_of_responses) >= 1:
         #     average_tag = 1
         # elif average_tag <= 0.4 and len(list_of_responses) >= 1:
