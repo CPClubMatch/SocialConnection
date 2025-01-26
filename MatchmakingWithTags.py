@@ -134,7 +134,7 @@ def rename_category_to_number(category_name):
         return 8
     
 
-def get_user_tags_csv(tags, questions):
+def get_user_tags_df(tags, questions):
     columns_list = [value[0] for value in tags.values()]
     user_tags_dictionary = {key_number : [] for key_number in tags}
     
@@ -155,9 +155,9 @@ def get_user_tags_csv(tags, questions):
 
     user_tags_dictionary = calc_user_tag_scores(user_tags_dictionary, tags)
 
-    user_csv = pd.DataFrame(user_tags_dictionary.values()).transpose()
-    user_csv.columns = columns_list  
-    return user_csv
+    user_df = pd.DataFrame(user_tags_dictionary.values()).transpose()
+    user_df.columns = columns_list  
+    return user_df
 
 def calc_user_tag_scores(user_tags_dictionary, tags_with_parents_dictionary):
 
@@ -178,10 +178,15 @@ def calc_user_tag_scores(user_tags_dictionary, tags_with_parents_dictionary):
         if average_tag < average_parent: #average less than parent tag of current tag
             average_tag = (average_tag+average_parent)/2
         
-        if average_tag == 1 and len(list_of_responses) > 1:
+        if average_tag == 1 and len(list_of_responses) >= 1:
             average_tag = 2
-        
-        print(f"Tag: {tagnumber} Parent: {average_parent} Tag: {average_tag}")
+        elif average_tag >= 0.6 and len(list_of_responses) >= 1:
+            average_tag = 1
+        elif average_tag <= 0.4 and len(list_of_responses) >= 1:
+            average_tag = 0
+        else:
+            average_tag = 0.5
+
         user_tags_dictionary[tagnumber] = average_tag
 
     return user_tags_dictionary
@@ -224,32 +229,51 @@ def get_yes_no(prompt):
         else:
             print("Please answer 'yes' or 'no'.")
 
-resulthope = get_user_tags_csv(ALL_TAGS, CATEGORY_QUESTIONS)
-resulthope.to_csv("pleessssseee.csv")
+def calculate_similarity(user_scores, club_scores):
+    """Calculates cosine similarity between user and club scores."""
+    user_vector = np.array([user_scores.loc[0, ALL_TAGS[tag_id][0]] for tag_id in ALL_TAGS])
+    club_vector = np.array([club_scores[ALL_TAGS[tag_id][0]] for tag_id in ALL_TAGS])
+
+    similarity = cosine_similarity([user_vector], [club_vector])[0][0] 
+    return similarity
+
+def rank_clubs_by_similarity(user_scores : pd.DataFrame, clubs_scored : pd.DataFrame):
+    """Ranks clubs by similarity to user's scores."""
+    ranked_clubs = []
+    for index, club in clubs_scored.iterrows():
+        similarity = calculate_similarity(user_scores, club)
+        ranked_clubs.append({
+            "Club Name": club["Club Name"],
+            "similarity": similarity
+        })
+    
+    ranked_clubs.sort(key=lambda x: x["similarity"], reverse=True)
+    return ranked_clubs[:10]
+
+# def convert_club_tag_names_to_tag_nums(club_scores):
+#     for col in club_scores.columns:
+#         club_scores
 
 # 3. MAIN SCRIPT
-# def main():
-#     # Load clubs from CSV
-#     csv_filename = "clubs.csv"
-#     clubs = load_clubs_from_csv(csv_filename)
+def main():
+    # Load clubs from CSV
+    csv_filename = "quiz_format.csv"
+    club_scores = pd.read_csv(csv_filename)
+    
+    # Collect user responses and scores
+    user_tags = get_user_tags_df(ALL_TAGS, CATEGORY_QUESTIONS)
+    
+    print("\nSurvey complete! Here's how you scored for each tag:")
+    print(user_tags, "\n\n")
 
-#     # Collect user responses and scores
-#     averaged_scores = collect_user_tags()
+    # Rank clubs by similarity
+    matched_clubs = rank_clubs_by_similarity(user_tags, club_scores)
 
-#     print("\nSurvey complete! Here's how you scored for each tag:")
-#     for tag_id, score in sorted(averaged_scores.items()):
-#         print(f"  - {tag_id}: {ALL_TAGS[tag_id]} => Score: {score:.2f}")
-
-#     # Rank clubs by similarity
-#     matched_clubs = rank_clubs_by_similarity(clubs, averaged_scores)
-
-#     # Display the top 10 most similar clubs
-#     print("\nHere are the top 10 clubs that match your interests:")
-#     for club in matched_clubs:
-#         print(f"\nClub: {club['name']}")
-#         print(f"Description: {club['description']}")
-#         print(f"Similarity Score: {club['similarity']:.4f}")
-#         print("Tags: ", ", ".join([ALL_TAGS[tag] for tag in club["tags"]]))
-
-# if __name__ == "__main__":
-#     main()
+    # Display the top 10 most similar clubs
+    print("\nHere are the top 10 clubs that match your interests:")
+    for club in matched_clubs:
+        print(f"\nClub: {club['Club Name']}")
+        print(f"Similarity Score: {club['similarity']:.4f}")
+       
+if __name__ == "__main__":
+    main()
