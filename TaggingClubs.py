@@ -65,4 +65,4 @@ scaled_similarity_matrix = min_max_scaler.fit_transform(similarity_matrix)
 sim_df = pd.DataFrame(scaled_similarity_matrix, columns= tag_list)
 sim_df['Club Name'] = club_name
 
-sim_df.to_csv('return_stuff.csv', index=False)
+sim_df.to_csv('WinterClubsScored.csv', index=False)
