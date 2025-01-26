@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Papa from "papaparse";
+import { usePapaParse } from "react-papaparse";
+
 import "./App.css";
-// Adjust these image imports to match your own project structure
 import logo from "./retroheart.png";
 import cupid from "./cupid.png";
 
 // ------------------- 1. DEFINE TAGS AND CATEGORIES -------------------
-// Each key: numeric tag ID. Value: [Tag Name, Parent Tag ID].
 const ALL_TAGS = {
   1: ["Community Service", 1],
   2: ["Professional Networking", 2],
@@ -73,7 +72,10 @@ function renameCategoryToNumber(categoryName) {
 
 const CATEGORY_QUESTIONS = {
   "Sports and Recreation": [
-    ["Do you enjoy team-based sports like soccer, basketball, or cricket?", [16, 13]],
+    [
+      "Do you enjoy team-based sports like soccer, basketball, or cricket?",
+      [16, 13],
+    ],
     ["Are individual sports, such as cycling or fencing, more your style?", [16, 38]],
     ["Do you prefer outdoor activities like hiking, rowing, or dragon boating?", [16, 38, 11]],
     ["Would you participate in competitive events like triathlons or esports?", [16, 13]],
@@ -139,17 +141,15 @@ const CATEGORY_QUESTIONS = {
 };
 
 // ------------------- 2. HELPER FUNCTIONS ----------------------------
-
 function finalizeUserTags(userTags) {
   const finalScores = {};
+
   for (const tagIdStr of Object.keys(userTags)) {
     const tagId = parseInt(tagIdStr, 10);
     const responses = userTags[tagId] || [];
 
     // average for this tag
-    let avgTag = responses.length
-      ? responses.reduce((a, b) => a + b, 0) / responses.length
-      : 0;
+    let avgTag = responses.length ? responses.reduce((a, b) => a + b, 0) / responses.length : 0;
 
     // average for parent
     const parentId = ALL_TAGS[tagId][1];
@@ -170,6 +170,7 @@ function finalizeUserTags(userTags) {
 
     finalScores[tagId] = avgTag;
   }
+
   return finalScores;
 }
 
@@ -199,11 +200,10 @@ function userScoresToVector(finalScores) {
   return vector;
 }
 
-// Rank clubs by building their vector (matching tag names in columns) 
+// Rank clubs by building their vector (matching tag names in columns)
 // and comparing to user's final vector via cosine similarity
 function rankClubsBySimilarity(finalUserTags, clubs) {
   const userVector = userScoresToVector(finalUserTags);
-
   const sortedTagIds = Object.keys(ALL_TAGS)
     .map((k) => parseInt(k, 10))
     .sort((a, b) => a - b);
@@ -213,11 +213,9 @@ function rankClubsBySimilarity(finalUserTags, clubs) {
       // The key in the CSV is the name of the tag (e.g. "Community Service")
       // So we find ALL_TAGS[tagId][0] to get that name
       const tagName = ALL_TAGS[tagId][0];
-      // parse numeric if it’s not "Club Name"
       let val = club[tagName];
       return typeof val === "number" ? val : parseFloat(val) || 0;
     });
-
     const similarity = cosineSimilarity(userVector, clubVector);
     return { ...club, similarity };
   });
@@ -227,7 +225,6 @@ function rankClubsBySimilarity(finalUserTags, clubs) {
 }
 
 // ------------------- 3. MAIN REACT COMPONENT ------------------------
-
 function App() {
   const [quizStarted, setQuizStarted] = useState(false);
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
@@ -245,16 +242,18 @@ function App() {
 
   const [surveyComplete, setSurveyComplete] = useState(false);
   const [topClubs, setTopClubs] = useState([]);
-  const [clubScores, setClubScores] = useState([]); // we’ll fetch CSV into this
+  const [clubScores, setClubScores] = useState([]);
+
+  // Use the react-papaparse hook
+  const { readRemoteFile } = usePapaParse();
 
   // ------------------- 4. FETCH & PARSE CSV ON MOUNT ----------------
   useEffect(() => {
-    Papa.parse("./FinalWinterClubScores.csv", {
+    readRemoteFile("/FinalWinterClubScores.csv", {
       download: true,
       header: true,
       complete: (results) => {
         // Convert numeric columns from string to float
-        // Exclude "Club Name" or any columns that are not numeric
         results.data.forEach((row) => {
           for (let key in row) {
             if (key !== "Club Name" && row[key] !== undefined && row[key] !== "") {
@@ -268,7 +267,7 @@ function App() {
         console.error("Error parsing CSV:", err);
       },
     });
-  }, []);
+  }, [readRemoteFile]);
 
   // -------------- 5. QUIZ LOGIC HANDLERS ----------------------------
   function handleStartQuiz() {
@@ -305,34 +304,32 @@ function App() {
     });
 
     const thisCategoryName = categoryNames[currentCategoryIndex];
-    const questionsForCategory = CATEGORY_QUESTIONS[thisCategoryName];
+    const questionsInThisCategory = CATEGORY_QUESTIONS[thisCategoryName];
 
-    if (currentQuestionIndex === questionsForCategory.length - 1) {
-      goToNextCategoryOrFinish();
-    } else {
+    if (currentQuestionIndex < questionsInThisCategory.length - 1) {
+      // Go to next sub-question
       setCurrentQuestionIndex((prev) => prev + 1);
+    } else {
+      // Move to the next category or finish
+      goToNextCategoryOrFinish();
     }
   }
 
   function goToNextCategoryOrFinish() {
-    if (currentCategoryIndex === categoryNames.length - 1) {
-      finishSurvey();
-    } else {
+    if (currentCategoryIndex < categoryNames.length - 1) {
+      // Move to the next category
       setCurrentCategoryIndex((prev) => prev + 1);
-      setCurrentQuestionIndex(0);
+      setCurrentQuestionIndex(0); // Reset sub-question index for the next category
+    } else {
+      // Finish the survey
+      finalizeSurvey();
     }
   }
 
-  function finishSurvey() {
-    const finalScores = finalizeUserTags(userTags);
-
-    if (clubScores.length > 0) {
-      const top10 = rankClubsBySimilarity(finalScores, clubScores);
-      setTopClubs(top10);
-    } else {
-      // If CSV not yet loaded for some reason, fallback
-      setTopClubs([]);
-    }
+  function finalizeSurvey() {
+    const finalUserTags = finalizeUserTags(userTags);
+    const rankedClubs = rankClubsBySimilarity(finalUserTags, clubScores);
+    setTopClubs(rankedClubs);
     setSurveyComplete(true);
   }
 
@@ -385,7 +382,7 @@ function App() {
   // If user hasn't answered the main category question yet (or answered 'no')
   // then ask "Are you interested in this category?"
   if (
-    categoryAnswers.length === 0 || // not answered yet
+    categoryAnswers.length === 0 ||
     (categoryAnswers.length > 0 &&
       subQuestions &&
       currentQuestionIndex === 0 &&
@@ -401,9 +398,7 @@ function App() {
             <img src={cupid} alt="Logo" className="header-icon-cupid" />
           </div>
           <div className="question-block">
-            <h2 className="major-question">
-              Are you interested in {currentCategory}?
-            </h2>
+            <h2 className="major-question"> Are you interested in {currentCategory}? </h2>
             <div>
               <button onClick={() => handleCategoryInterestResponse(1)}>Yes</button>
               <button onClick={() => handleCategoryInterestResponse(0.5)}>Maybe</button>
@@ -438,3 +433,4 @@ function App() {
 }
 
 export default App;
+
