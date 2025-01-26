@@ -7,9 +7,9 @@ DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-df = pd.read_csv("NicosScrapedData.csv")
+df = pd.read_csv("WinterClubFairClubDescriptions - Sheet1.csv")
 club_name = df["Club Name"]
-descriptions = df["Description Excerpt"].to_list()
+descriptions = df["Club Purpose/Mission Statement"].to_list()
 
 tag_list = [
     "Community Service",

@@ -180,12 +180,19 @@ def calc_user_tag_scores(user_tags_dictionary, tags_with_parents_dictionary):
         
         if average_tag == 1 and len(list_of_responses) >= 1:
             average_tag = 2
-        elif average_tag >= 0.6 and len(list_of_responses) >= 1:
+        elif average_tag >= 0.7 and len(list_of_responses) >= 1:
             average_tag = 1
-        elif average_tag <= 0.4 and len(list_of_responses) >= 1:
-            average_tag = 0
         else:
-            average_tag = 0.5
+            average_tag = 0
+
+        # if average_tag == 1 and len(list_of_responses) >= 1:
+        #     average_tag = 2
+        # elif average_tag >= 0.6 and len(list_of_responses) >= 1:
+        #     average_tag = 1
+        # elif average_tag <= 0.4 and len(list_of_responses) >= 1:
+        #     average_tag = 0
+        # else:
+        #     average_tag = 0.5
 
         user_tags_dictionary[tagnumber] = average_tag
 
@@ -248,7 +255,13 @@ def rank_clubs_by_similarity(user_scores : pd.DataFrame, clubs_scored : pd.DataF
         })
     
     ranked_clubs.sort(key=lambda x: x["similarity"], reverse=True)
+
+    ranked = pd.DataFrame(ranked_clubs)
+    ranked.to_csv("ranked_clubs.csv")
+    
     return ranked_clubs[:10]
+
+
 
 # 3. MAIN SCRIPT
 def main():
@@ -270,6 +283,6 @@ def main():
     for club in matched_clubs:
         print(f"\nClub: {club['Club Name']}")
         print(f"Similarity Score: {club['similarity']:.4f}")
-       
+    
 if __name__ == "__main__":
     main()
