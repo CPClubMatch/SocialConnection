@@ -175,8 +175,8 @@ def calc_user_tag_scores(user_tags_dictionary, tags_with_parents_dictionary):
         else:
             average_tag = sum(list_of_responses)/len(list_of_responses)
         
-        if average_tag < average_parent: 
-            average_tag = (average_tag+average_parent)/2
+        # if average_tag < average_parent: 
+        #     average_tag = (average_tag+average_parent)/2
 
         if average_tag == 1 and len(list_of_responses) >= 1:
             average_tag = 2
