@@ -4,6 +4,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 # 1. DEFINE TAGS AND BROAD CATEGORIES
+
+'''HAVE TO CHANGE ALL OF THIS AND IMPORT IT FROM APP JS'''
+
 ALL_TAGS = {
     1: ["Community Service", 1],
     2: ["Professional Networking", 2],
