@@ -4,3 +4,6 @@ env/
 .venv/
 .env/
 myenv/
+/node_modules
+/build
+.DS_Store
