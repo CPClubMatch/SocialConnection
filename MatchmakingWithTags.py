@@ -157,7 +157,6 @@ def get_user_tags_df(tags, questions):
 
     user_df = pd.DataFrame(user_tags_dictionary.values()).transpose()
     user_df.columns = columns_list  
-    user_df.to_csv("user_scores.csv", index=False)
     return user_df
 
 def calc_user_tag_scores(user_tags_dictionary, tags_with_parents_dictionary):
@@ -176,17 +175,11 @@ def calc_user_tag_scores(user_tags_dictionary, tags_with_parents_dictionary):
         else:
             average_tag = sum(list_of_responses)/len(list_of_responses)
         
-        if average_tag < average_parent: #average less than parent tag of current tag
+        if average_tag < average_parent: 
             average_tag = (average_tag+average_parent)/2
 
         if average_tag == 1 and len(list_of_responses) >= 1:
             average_tag = 2
-        # elif average_tag >= 0.6 and len(list_of_responses) >= 1:
-        #     average_tag = 1
-        # elif average_tag <= 0.4 and len(list_of_responses) >= 1:
-        #     average_tag = 0
-        # else:
-        #     average_tag = 0.5
 
         user_tags_dictionary[tagnumber] = average_tag
 
@@ -248,16 +241,13 @@ def rank_clubs_by_similarity(user_scores : pd.DataFrame, clubs_scored : pd.DataF
     
     ranked_clubs.sort(key=lambda x: x["similarity"], reverse=True)
 
-    ranked = pd.DataFrame(ranked_clubs)
-    ranked.to_csv("ranked_clubs.csv")
-    
     return ranked_clubs[:10]
 
 
 # 3. MAIN SCRIPT
 def main():
     # Load clubs from CSV
-    csv_filename = "quiz_format.csv"
+    csv_filename = "FinalWinterClubScores.csv"
     club_scores = pd.read_csv(csv_filename)
     
     # Collect user responses and scores
