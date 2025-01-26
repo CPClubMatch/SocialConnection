@@ -7,9 +7,9 @@ DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-df = pd.read_csv("NicosScrapedData.csv")
+df = pd.read_csv("WinterClubFairClubDescriptions - Sheet1.csv")
 club_name = df["Club Name"]
-descriptions = df["Description Excerpt"].to_list()
+descriptions = df["Club Purpose/Mission Statement"].to_list()
 
 tag_list = [
     "Community Service",
@@ -65,4 +65,4 @@ scaled_similarity_matrix = min_max_scaler.fit_transform(similarity_matrix)
 sim_df = pd.DataFrame(scaled_similarity_matrix, columns= tag_list)
 sim_df['Club Name'] = club_name
 
-sim_df.to_csv('return_stuff.csv', index=False)
+sim_df.to_csv('WinterClubsScored.csv', index=False)
