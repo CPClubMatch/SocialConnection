@@ -178,13 +178,6 @@ def calc_user_tag_scores(user_tags_dictionary, tags_with_parents_dictionary):
         
         if average_tag < average_parent: #average less than parent tag of current tag
             average_tag = (average_tag+average_parent)/2
-        
-        # if average_tag == 1 and len(list_of_responses) >= 1:
-        #     average_tag = 2
-        # elif average_tag >= 0.7 and len(list_of_responses) >= 1:
-        #     average_tag = 1
-        # else:
-        #     average_tag = 0
 
         if average_tag == 1 and len(list_of_responses) >= 1:
             average_tag = 2
@@ -238,7 +231,6 @@ def get_yes_no(prompt):
             print("Please answer 'yes' or 'no'.")
 
 def calculate_similarity(user_scores, club_scores):
-    """Calculates cosine similarity between user and club scores."""
     user_vector = np.array([user_scores.loc[0, ALL_TAGS[tag_id][0]] for tag_id in ALL_TAGS])
     club_vector = np.array([club_scores[ALL_TAGS[tag_id][0]] for tag_id in ALL_TAGS])
 
@@ -246,7 +238,6 @@ def calculate_similarity(user_scores, club_scores):
     return similarity
 
 def rank_clubs_by_similarity(user_scores : pd.DataFrame, clubs_scored : pd.DataFrame):
-    """Ranks clubs by similarity to user's scores."""
     ranked_clubs = []
     for index, club in clubs_scored.iterrows():
         similarity = calculate_similarity(user_scores, club)
@@ -261,7 +252,6 @@ def rank_clubs_by_similarity(user_scores : pd.DataFrame, clubs_scored : pd.DataF
     ranked.to_csv("ranked_clubs.csv")
     
     return ranked_clubs[:10]
-
 
 
 # 3. MAIN SCRIPT
