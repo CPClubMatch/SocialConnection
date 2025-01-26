@@ -261,6 +261,7 @@ function App() {
             }
           }
         });
+        console.log(results);
         setClubScores(results.data);
       },
       error: (err) => {
