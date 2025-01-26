@@ -250,10 +250,6 @@ def rank_clubs_by_similarity(user_scores : pd.DataFrame, clubs_scored : pd.DataF
     ranked_clubs.sort(key=lambda x: x["similarity"], reverse=True)
     return ranked_clubs[:10]
 
-# def convert_club_tag_names_to_tag_nums(club_scores):
-#     for col in club_scores.columns:
-#         club_scores
-
 # 3. MAIN SCRIPT
 def main():
     # Load clubs from CSV
