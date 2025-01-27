@@ -407,10 +407,11 @@ function App() {
         <header className="App-header">
           <div className="logo-title-container">
             <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
-            <h1 className="club-cupid-title">Club Cupid</h1>
+            <h1 className="club-cupid-title">Club<br />Cupid</h1>
             <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
           </div>
           <h2 className="top-matches-title">Here are your top club matches!</h2>
+          <button onClick={() => window.open("https://now.calpoly.edu/organizations", "_blank")}>Go See All Clubs</button>
           <div className="club-list">
             {topClubs.map((club, index) => (
               <div key={index} className="club-item">
@@ -433,7 +434,7 @@ function App() {
         <header className="App-header">
           <div className="logo-title-container">
             <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
-            <h1 className="club-cupid-title">Club Cupid</h1>
+            <h1 className="club-cupid-title">Club<br />Cupid</h1>
             <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
           </div>
           <h2><br /></h2>
@@ -460,7 +461,7 @@ function App() {
         <header className="App-header">
           <div className="logo-title-container">
             <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
-            <h1 className="club-cupid-title">Club Cupid</h1>
+            <h1 className="club-cupid-title">Club<br />Cupid</h1>
             <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
           </div>
           <h2><br /></h2>
@@ -483,7 +484,7 @@ function App() {
       <header className="App-header">
         <div className="logo-title-container">
           <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
-          <h1 className="club-cupid-title">Club Cupid</h1>
+          <h1 className="club-cupid-title">Club<br />Cupid</h1>
           <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
         </div>
         <h2><br /></h2>
