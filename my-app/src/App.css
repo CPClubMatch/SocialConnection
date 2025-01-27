@@ -1,20 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Copperplate&display=swap');
 
 
 
 .club-cupid-title {
-  font-size: 4rem;
+  font-size: 6rem;
   color: #FF69B4;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  -webkit-text-stroke: 0.2px black;
+  -webkit-text-stroke: 0.5px black;
+  padding: 0px;
 }
 
 .survey-title {
   font-size: 2rem;
   color: #4B0082;
   margin-bottom: 30px;
-  -webkit-text-stroke: 0.2px black;
+  -webkit-text-stroke: 1px black;
 }
 
 .major-question {
@@ -82,7 +84,7 @@ body, html {
 }
 
 body {
-  font-family: 'Bangers', sans-serif;
+  font-family: 'Copperplate', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #F9F3F7;
@@ -97,6 +99,8 @@ header {
   color: white;
   font-size: 2.5rem;
   margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,7 +122,9 @@ header .title {
   justify-content: flex-start;
   align-items: center;
   height: 100vh;
-  padding-top: 20px;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
 }
 
 .survey-box {
@@ -196,6 +202,8 @@ button:hover {
   width: 100%;
   max-width: 1200px;
   margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 0px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -224,6 +232,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  width: 100%;
 }
 
 .logo-title-container {
@@ -231,6 +240,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   white-space: nowrap;
+  width: 100%;
 }
 
 .header-icon {
@@ -263,15 +273,17 @@ button:hover {
     font-size: 2.2rem;
   }
 
+  .club-cupid-title {
+  font-size: 6rem;
+  color: #FF69B4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  -webkit-text-stroke: 0.5px black;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
   .category-name {
     font-size: 1.1rem;
-  }
-
-  .logo-title-container {
-    padding: 0 15px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
   }
 
   .header-icon {
