@@ -422,7 +422,7 @@ function App() {
           </div>
         </header>
         <footer>
-        <p>Made with ❤️ at Cal Poly by Nico, Akshat, and Justin</p>
+        <p>Made with ❤️ at Cal Poly by Nico, Akshat, Justin, and Luis</p>
         </footer>
       </div>
     );
