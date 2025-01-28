@@ -412,7 +412,7 @@ function App() {
           </div>
           <h2 className="top-matches-title">Here are your top club matches!</h2>
           <button onClick={() => window.open("https://now.calpoly.edu/organizations", "_blank")}>Go See All Clubs</button>
-          <button onClick={() => window.location.reload()}>Reload Page</button>
+          <button onClick={() => window.location.reload()}>Retake Quiz</button>
           <div className="club-list">
             {topClubs.map((club, index) => (
               <div key={index} className="club-item">
