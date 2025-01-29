@@ -177,7 +177,7 @@ const CATEGORY_QUESTIONS = {
   "Arts & Culture": [
     ["Do you enjoy creating visual art, such as painting or sculpture?", [3, 27, 5]],
     ["Are you passionate about performing arts, like theater, dance, or music?", [20, 3, 26]],
-    ["Do you like creative writing, such as poetry or storytelling?", [26, 3, 35]],
+    ["Do you like creative writing, such as poetry over storytelling?", [26, 3, 35]],
     ["Would you join a photography or digital design club?", [29, 3, 27]],
     ["Are you interested in textile arts or sustainable fashion design?", [27, 5, 3]],
     ["Do you prefer collaborative art projects or solo exhibitions?", [27, 3, 35]],
