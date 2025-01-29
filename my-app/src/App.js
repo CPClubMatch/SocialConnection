@@ -438,7 +438,6 @@ function App() {
             <h1 className="club-cupid-title">Club<br />Cupid</h1>
             <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
           </div>
-          <h2><br /></h2>
           <h2 className="survey-title">Club Matchmaking Survey</h2>
           {/* We removed the file input here, so the CSV is auto-loaded */}
           {clubData.length > 0 ? (
@@ -465,7 +464,6 @@ function App() {
             <h1 className="club-cupid-title">Club<br />Cupid</h1>
             <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
           </div>
-          <h2><br /></h2>
           <div className="question-block">
             <h2 className="major-question">Are you interested in {categoryName}?</h2>
             <button onClick={() => handleCategoryInterestClick("yes")}>Yes</button>
@@ -488,7 +486,6 @@ function App() {
           <h1 className="club-cupid-title">Club<br />Cupid</h1>
           <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
         </div>
-        <h2><br /></h2>
         <div className="question-block">
           <h3 className="category-name">{categoryName}</h3>
           <h2 className="subcategory-question">{currentQuestion[0]}</h2>
