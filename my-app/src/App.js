@@ -180,7 +180,7 @@ const CATEGORY_QUESTIONS = {
     ["Do you like creative writing, such as poetry over storytelling?", [26, 3, 35]],
     ["Would you join a photography or digital design club?", [29, 3, 27]],
     ["Are you interested in textile arts or sustainable fashion design?", [27, 5, 3]],
-    ["Do you prefer collaborative art projects or solo exhibitions?", [27, 3, 35]],
+    ["Do you prefer collaborative art projects over solo exhibitions?", [27, 3, 35]],
     ["Would you enjoy expressing your creativity in a non-competitive environment?", [3, 35, 27]]
   ],
   "Sports & Recreation": [
