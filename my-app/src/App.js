@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import './App.css';
-import logo from './retroheart.png';
-import cupid from './cupid.png';
 
 // -------------------- 1. DEFINE TAGS AND BROAD CATEGORIES --------------------
 const ALL_TAGS = {
@@ -312,10 +310,8 @@ const handleCategorySelection = (category) => {
     return (
       <div className="App">
         <header className="App-header">
-          <div className="logo-title-container">
-            <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
-            <h1 className="club-cupid-title">Club<br />Cupid</h1>
-            <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
+          <div className="final-title-container">
+            <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
           </div>
           <h2 className="top-matches-title">Here are your top club matches!</h2>
           <button onClick={() => window.open("https://now.calpoly.edu/organizations", "_blank")}>Go See All Clubs</button>
@@ -329,9 +325,6 @@ const handleCategorySelection = (category) => {
             ))}
           </div>
         </header>
-        <footer>
-        <p>Made with ❤️ at Cal Poly by Nico, Akshat, Justin, and Luis</p>
-        </footer>
       </div>
     );
   }
@@ -341,9 +334,7 @@ const handleCategorySelection = (category) => {
       <div className="App">
         <header className="App-header">
           <div className="logo-title-container">
-            <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
-            <h1 className="club-cupid-title">Club<br />Cupid</h1>
-            <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
+            <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
           </div>
           <h2 className="survey-title">Select up to 3 categories</h2>
           <div className="category-selection-container">
@@ -377,9 +368,7 @@ const handleCategorySelection = (category) => {
       <div className="App">
         <header className="App-header">
           <div className="logo-title-container">
-            <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
-            <h1 className="club-cupid-title">Club<br />Cupid</h1>
-            <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
+            <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
           </div>
           <div className="question-block">
             {/* <h2 className="major-question">Are you interested in {categoryName}?</h2>
@@ -400,9 +389,7 @@ const handleCategorySelection = (category) => {
     <div className="App">
       <header className="App-header">
         <div className="logo-title-container">
-          <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
-          <h1 className="club-cupid-title">Club<br />Cupid</h1>
-          <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
+          <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
         </div>
         <div className="question-block">
           <h3 className="category-name">{categoryName}</h3>
