@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import './App.css';
+import logo from './retroheart.png';
+import cupid from './cupid.png';
 
 // -------------------- 1. DEFINE TAGS AND BROAD CATEGORIES --------------------
 const ALL_TAGS = {
@@ -133,33 +135,32 @@ function calcUserTagScores(userTags) {
     const avgTag = rawAverages[tagnumber]; // Get the raw average for the current tag
 
     let finalValue = avgTag; // Initialize the final value for the current tag to the raw average
-    if (finalValue === 1 && userTags[tagnumber].length > 2) {
-      finalValue = 2;
+    if (finalValue === 1 && userTags[tagnumber].length > 2) { // If the raw average is 1 and the user has responded to that tag a minimum of 2 times
+      finalValue = 2; // Set the final value for the current tag to 2
     }
-    finalScores[tagnumber] = finalValue;
+    finalScores[tagnumber] = finalValue; // Set the final score for the current tag to the final value
   }
-  return finalScores;
+  return finalScores; // Return the dictionary of final scores
 }
 
-function buildClubVectorFromRow(row) {
-  const vector = [];
-  for (let tagId = 1; tagId <= 40; tagId++) {
-    vector.push(parseFloat(row[tagId]) || 0);
+function buildClubVectorFromRow(row) { // This function takes a row of data from the CSV file and returns a vector of tag scores for that club for cosine simiarity
+  const vector = []; // Initialize an empty list to store the tag scores
+  for (let tagId = 1; tagId <= 40; tagId++) { // Iterate over each tag number from 1 to 40
+    vector.push(parseFloat(row[tagId])); // Add the tag score for the current tag to the vector
   }
-  return vector;
+  return vector; // Return the vector of tag scores
 }
 
-function cosineSimilarity(vecA, vecB) {
-  let dotProduct = 0;
-  let normA = 0;
-  let normB = 0;
+function cosineSimilarity(vecA, vecB) { // This function takes two vectors and returns the cosine similarity between them
+  let dotProduct = 0; // Initialize the dot product to 0
+  let normA = 0; // Initialize the norm of vector A to 0
+  let normB = 0; // Initialize the norm of vector B to 0
 
-  for (let i = 0; i < vecA.length; i++) {
-    dotProduct += vecA[i] * vecB[i];
-    normA += vecA[i] * vecA[i];
+  for (let i = 0; i < vecA.length; i++) { // Iterate over each element in the vectors
+    dotProduct += vecA[i] * vecB[i]; // Calculate the dot product by multiplying the corresponding elements in the vectors
+    normA += vecA[i] * vecA[i]; 
     normB += vecB[i] * vecB[i];
   }
-  if (normA === 0 || normB === 0) return 0;
   return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
 }
 
@@ -310,8 +311,10 @@ const handleCategorySelection = (category) => {
     return (
       <div className="App">
         <header className="App-header">
-          <div className="final-title-container">
-            <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
+          <div className="logo-title-container">
+            <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
+            <h1 className="club-cupid-title">Club<br />Cupid</h1>
+            <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
           </div>
           <h2 className="top-matches-title">Here are your top club matches!</h2>
           <button onClick={() => window.open("https://now.calpoly.edu/organizations", "_blank")}>Go See All Clubs</button>
@@ -325,6 +328,9 @@ const handleCategorySelection = (category) => {
             ))}
           </div>
         </header>
+        <footer>
+        <p>Made with ❤️ at Cal Poly by Nico, Akshat, Justin, and Luis</p>
+        </footer>
       </div>
     );
   }
@@ -334,7 +340,9 @@ const handleCategorySelection = (category) => {
       <div className="App">
         <header className="App-header">
           <div className="logo-title-container">
-            <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
+            <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
+            <h1 className="club-cupid-title">Club<br />Cupid</h1>
+            <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
           </div>
           <h2 className="survey-title">Select up to 3 categories</h2>
           <div className="category-selection-container">
@@ -368,7 +376,9 @@ const handleCategorySelection = (category) => {
       <div className="App">
         <header className="App-header">
           <div className="logo-title-container">
-            <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
+            <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
+            <h1 className="club-cupid-title">Club<br />Cupid</h1>
+            <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
           </div>
           <div className="question-block">
             {/* <h2 className="major-question">Are you interested in {categoryName}?</h2>
@@ -389,7 +399,9 @@ const handleCategorySelection = (category) => {
     <div className="App">
       <header className="App-header">
         <div className="logo-title-container">
-          <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
+          <img src={logo} alt="Logo" className="header-icon" width="100" height="100" />
+          <h1 className="club-cupid-title">Club<br />Cupid</h1>
+          <img src={cupid} alt="Logo" className="header-icon-cupid" width="100" height="100" />
         </div>
         <div className="question-block">
           <h3 className="category-name">{categoryName}</h3>
