@@ -189,7 +189,7 @@ function App() {
     }
     return initial;
   });
-  const [categoryInterest, setCategoryInterest] = useState({});
+  // const [categoryInterest, setCategoryInterest] = useState({});
   const [surveyComplete, setSurveyComplete] = useState(false);
   const [quizStarted, setQuizStarted] = useState(false);
   const [topClubs, setTopClubs] = useState([]);
@@ -211,6 +211,7 @@ function App() {
 
   const handleStartQuiz = () => {
     if (selectedCategories.length > 0) {
+      console.log("Selected Categories:", selectedCategories);
       setQuizStarted(true);
     }
   };
@@ -228,24 +229,37 @@ const handleCategorySelection = (category) => {
 };
   
 // not needed in the new version
-  const handleCategoryInterestClick = (interest) => {
-    const thisCategory = categoryKeys[currentCategoryIndex];
-    setCategoryInterest((prev) => ({ ...prev, [thisCategory]: interest }));
-    if (interest === "no") {
-      goToNextCategory();
-    } else {
+  // const handleCategoryInterestClick = (interest) => {
+  //   const thisCategory = categoryKeys[currentCategoryIndex];
+  //   setCategoryInterest((prev) => ({ ...prev, [thisCategory]: interest }));
+  //   if (interest === "no") {
+  //     goToNextCategory();
+  //   } else {
+  //     setCurrentQuestionIndex(0);
+  //   }
+  // };
+
+  const handleCategoryInterestClick = () => {
       setCurrentQuestionIndex(0);
-    }
   };
 
   const goToNextCategory = () => {
-    if (currentCategoryIndex < categoryKeys.length - 1) {
+    if (currentCategoryIndex < selectedCategories.length - 1) {
       setCurrentCategoryIndex(currentCategoryIndex + 1);
       setCurrentQuestionIndex(0);
     } else {
       finalizeScoresAndComputeClubs();
     }
   };
+
+  // const goToNextCategory = () => {
+  //   if (currentCategoryIndex < categoryKeys.length - 1) {
+  //     setCurrentCategoryIndex(currentCategoryIndex + 1);
+  //     setCurrentQuestionIndex(0);
+  //   } else {
+  //     finalizeScoresAndComputeClubs();
+  //   }
+  // };
 
   const handleSubQuestionAnswer = (tagIds, answeredYes) => {
     const numericAnswer = answeredYes ? 1 : 0;
@@ -266,19 +280,35 @@ const handleCategorySelection = (category) => {
   };
 
   const applyCategoryInterestScores = (tempUserTags) => {
-    for (let cName in categoryInterest) {
-      const interest = categoryInterest[cName];
-      const catTagId = renameCategoryToNumber(cName);
-      if (interest === "yes") {
+    // Iterate over all possible categories
+    for (let categoryName of categoryKeys) {
+      const catTagId = renameCategoryToNumber(categoryName);
+      
+      // If the category is in selectedCategories, push 1, otherwise push 0
+      if (selectedCategories.includes(categoryName)) {
         tempUserTags[catTagId].push(1);
-      } else if (interest === "maybe") {
-        tempUserTags[catTagId].push(0.5);
       } else {
         tempUserTags[catTagId].push(0);
       }
     }
     return tempUserTags;
   };
+  
+
+  // const applyCategoryInterestScores = (tempUserTags) => {
+  //   for (let cName in categoryInterest) {
+  //     const interest = categoryInterest[cName];
+  //     const catTagId = renameCategoryToNumber(cName);
+  //     if (interest === "yes") {
+  //       tempUserTags[catTagId].push(1);
+  //     } else if (interest === "maybe") {
+  //       tempUserTags[catTagId].push(0.5);
+  //     } else {
+  //       tempUserTags[catTagId].push(0);
+  //     }
+  //   }
+  //   return tempUserTags;
+  // };
 
   const renameCategoryToNumber = (categoryName) => {
     if (categoryName === "Community Service & Advocacy") return 1;
@@ -360,27 +390,29 @@ const handleCategorySelection = (category) => {
     );
   }
 
-  const categoryName = categoryKeys[currentCategoryIndex];
-  const interest = categoryInterest[categoryName];
-  if (interest === undefined) {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <div className="logo-title-container">
-            <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
-          </div>
-          <div className="question-block">
-            {/* <h2 className="major-question">Are you interested in {categoryName}?</h2>
-            <button onClick={() => handleCategoryInterestClick("yes")}>Yes</button>
-            <button onClick={() => handleCategoryInterestClick("maybe")}>Maybe</button>
-            <button onClick={() => handleCategoryInterestClick("no")}>No</button> */}
+  // const categoryName = selectedCategories[currentCategoryIndex];
+  // //const interest = categoryInterest[categoryName];
+  // const interest = selectedCategories[categoryName];
+  // if (interest === undefined) {
+  //   return (
+  //     <div className="App">
+  //       <header className="App-header">
+  //         <div className="logo-title-container">
+  //           <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
+  //         </div>
+  //         <div className="question-block">
+  //           <button onClick={() => handleCategoryInterestClick()}>Start Category</button>
+  //           {/* <h2 className="major-question">Are you interested in {categoryName}?</h2>
+  //           <button onClick={() => handleCategoryInterestClick("yes")}>Yes</button>
+  //           <button onClick={() => handleCategoryInterestClick("maybe")}>Maybe</button>
+  //           <button onClick={() => handleCategoryInterestClick("no")}>No</button> */}
             
-          </div>
-        </header>
-      </div>
-    );
-  }
-
+  //         </div>
+  //       </header>
+  //     </div>
+  //   );
+  // }
+  const categoryName = selectedCategories[currentCategoryIndex];
   const questionsForCategory = CATEGORY_QUESTIONS[categoryName];
   const currentQuestion = questionsForCategory[currentQuestionIndex];
 
