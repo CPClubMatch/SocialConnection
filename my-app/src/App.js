@@ -46,14 +46,23 @@ const ALL_TAGS = {
   40: ["Culinary Arts", 40]
 };
 
+const IDENTITY_QUESTIONS = {
+    "Identity" : [
+    ["What gender do you identify the most with?"],
+    ["What race do you inentify the most with?"],
+    ["What is your major?"],
+    ["What religion do you identify the most with?"]
+  ]
+}
+for (const category in IDENTITY_QUESTIONS) {
+  console.log(`${category}:`);
+  IDENTITY_QUESTIONS[category].forEach((question, index) => {
+    console.log(`  ${index + 1}. ${question[0]}`);
+  });
+}
+
 
 const CATEGORY_QUESTIONS = {
-  // "Identity" : [
-  //   ["What gender do you identify the most with?"],
-  //   ["What race do you inentify the most with?"],
-  //   ["What is your major?"],
-  //   ["What religion do you identify the most with?"]
-  // ],
   "Community Service & Advocacy": [
     ["Are you passionate about volunteering to support local communities?", [1, 33, 17]],
     ["Do you enjoy advocating for social or environmental justice?", [17, 21, 5]],
@@ -195,6 +204,7 @@ function App() {
   const [topClubs, setTopClubs] = useState([]);
 
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [identityCompleted, setIdentityCompleted] = useState(false);
 
   // ------------------ ONLY CHANGE: Automatically load local CSV ------------------ //
   useEffect(() => {
@@ -270,6 +280,27 @@ const handleCategorySelection = (category) => {
     }
     return tempUserTags;
   };
+
+
+  const handleIdentityQuestions = (answeredYes) => {
+    const numericAnswer = answeredYes ? 1 : 0;
+    if (numericAnswer){
+      setCurrentQuestionIndex(0);
+      doIdentityQuestions();
+    }else {
+      setIdentityCompleted(true);
+    }
+  };
+
+  const doIdentityQuestions = () => {
+    if (currentQuestionIndex === IDENTITY_QUESTIONS[1].length - 1) {
+      setIdentityCompleted(true);
+    }
+
+    else {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
+  };
   
 
   const renameCategoryToNumber = (categoryName) => {
@@ -297,10 +328,32 @@ const handleCategorySelection = (category) => {
     }
     const topTen = rankClubsBySimilarity(userVector, clubData);
     setTopClubs(topTen);
+    setCurrentQuestionIndex(0);
     setSurveyComplete(true);
   };
 
-  if (surveyComplete) {
+  const questionsForIdentity = IDENTITY_QUESTIONS[0][0];
+  console.log("identity:" + IDENTITY_QUESTIONS[0][0])
+  const currentIdentityQuestion = questionsForIdentity[0];
+  if (surveyComplete && !identityCompleted){
+    return (
+      <div className="App">
+        <header className="App-header">
+          <div className="final-title-container">
+            <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
+          </div>
+          <div className="question-block">
+            <h2 className="Identity Questions">{currentIdentityQuestion[0]}</h2>
+            <button onClick={() => handleIdentityQuestions(true)}>Yes</button>
+            <button onClick={() => handleIdentityQuestions(false)}>No</button>
+          </div>
+        </header>
+      </div>
+    );
+  }
+
+
+  if (surveyComplete && identityCompleted) {
     return (
       <div className="App">
         <header className="App-header">
@@ -354,7 +407,7 @@ const handleCategorySelection = (category) => {
       </div>
     );
   }
-  
+
   const categoryName = selectedCategories[currentCategoryIndex];
   const questionsForCategory = CATEGORY_QUESTIONS[categoryName];
   const currentQuestion = questionsForCategory[currentQuestionIndex];
