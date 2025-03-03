@@ -326,6 +326,9 @@ const handleCategorySelection = (category) => {
     tempUserTags = applyCategoryInterestScores(tempUserTags);
     const finalScores = calcUserTagScores(tempUserTags);
 
+    console.log(tempUserTags);
+    console.log(finalScores);
+
     const userVector = [];
     for (let tagId = 1; tagId <= 40; tagId++) {
       userVector.push(finalScores[tagId] || 0);
