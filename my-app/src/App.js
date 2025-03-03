@@ -152,7 +152,7 @@ function calcUserTagScores(userTags) {
 
 function buildClubVectorFromRow(row) { // This function takes a row of data from the CSV file and returns a vector of tag scores for that club for cosine simiarity
   const vector = []; // Initialize an empty list to store the tag scores
-  for (let tagId = 0; tagId <= 39; tagId++) { // Iterate over each tag number from 1 to 40
+  for (let tagId = 1; tagId <= 40; tagId++) { // Iterate over each tag number from 1 to 40
     vector.push(parseFloat(row[tagId])); // Add the tag score for the current tag to the vector
   }
   return vector; // Return the vector of tag scores
@@ -176,7 +176,7 @@ function rankClubsBySimilarity(userVector, clubData) {
   for (let i = 1; i < clubData.length; i++) {
     const row = clubData[i];
     if (row.length < 41) continue;
-    const clubName = row[40];
+    const clubName = row[0];
     const clubVector = buildClubVectorFromRow(row);
     const similarity = cosineSimilarity(userVector, clubVector);
     results.push({ clubName, similarity });
@@ -237,6 +237,21 @@ const handleCategorySelection = (category) => {
     return prev; // Prevent selecting more than 3
   });
 };
+  
+// not needed in the new version
+  // const handleCategoryInterestClick = (interest) => {
+  //   const thisCategory = categoryKeys[currentCategoryIndex];
+  //   setCategoryInterest((prev) => ({ ...prev, [thisCategory]: interest }));
+  //   if (interest === "no") {
+  //     goToNextCategory();
+  //   } else {
+  //     setCurrentQuestionIndex(0);
+  //   }
+  // };
+
+  const handleCategoryInterestClick = () => {
+      setCurrentQuestionIndex(0);
+  };
 
   const goToNextCategory = () => {
     if (currentCategoryIndex < selectedCategories.length - 1) {
@@ -247,6 +262,14 @@ const handleCategorySelection = (category) => {
     }
   };
 
+  // const goToNextCategory = () => {
+  //   if (currentCategoryIndex < categoryKeys.length - 1) {
+  //     setCurrentCategoryIndex(currentCategoryIndex + 1);
+  //     setCurrentQuestionIndex(0);
+  //   } else {
+  //     finalizeScoresAndComputeClubs();
+  //   }
+  // };
 
   const handleSubQuestionAnswer = (tagIds, answeredYes) => {
     const numericAnswer = answeredYes ? 1 : 0;
@@ -400,14 +423,42 @@ const handleCategorySelection = (category) => {
         </div>
 
 
-          <button onClick={handleStartQuiz} disabled={selectedCategories.length === 0}>
-            Start Quiz
-          </button>
+         <button 
+  className="start-quiz-button"
+  onClick={handleStartQuiz} 
+  disabled={selectedCategories.length === 0}
+>
+  Start Quiz
+</button>
+
         </header>
       </div>
     );
   }
 
+
+  // const categoryName = selectedCategories[currentCategoryIndex];
+  // //const interest = categoryInterest[categoryName];
+  // const interest = selectedCategories[categoryName];
+  // if (interest === undefined) {
+  //   return (
+  //     <div className="App">
+  //       <header className="App-header">
+  //         <div className="logo-title-container">
+  //           <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
+  //         </div>
+  //         <div className="question-block">
+  //           <button onClick={() => handleCategoryInterestClick()}>Start Category</button>
+  //           {/* <h2 className="major-question">Are you interested in {categoryName}?</h2>
+  //           <button onClick={() => handleCategoryInterestClick("yes")}>Yes</button>
+  //           <button onClick={() => handleCategoryInterestClick("maybe")}>Maybe</button>
+  //           <button onClick={() => handleCategoryInterestClick("no")}>No</button> */}
+            
+  //         </div>
+  //       </header>
+  //     </div>
+  //   );
+  // }
   const categoryName = selectedCategories[currentCategoryIndex];
   const questionsForCategory = CATEGORY_QUESTIONS[categoryName];
   const currentQuestion = questionsForCategory[currentQuestionIndex];
