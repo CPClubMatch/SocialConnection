@@ -340,7 +340,9 @@ const handleCategorySelection = (category) => {
     console.log(finalScores);
 
     const userVector = [];
+    // 1 and 40 and not 0 and 39?
     for (let tagId = 1; tagId <= 40; tagId++) {
+      //console.log("tag: " + tagId + "," + finalScores[tagId]);
       userVector.push(finalScores[tagId] || 0);
     }
     const topTen = rankClubsBySimilarity(userVector, clubData);
@@ -349,9 +351,10 @@ const handleCategorySelection = (category) => {
     setSurveyComplete(true);
   };
 
-  // const questionsForIdentity = IDENTITY_QUESTIONS[0][0];
-  // console.log("identity:" + IDENTITY_QUESTIONS[0][0])
-  // const currentIdentityQuestion = questionsForIdentity[0];
+  const questionsForIdentity = IDENTITY_QUESTIONS["Identity"];
+  const currentIdentityQuestion = questionsForIdentity[currentCategoryIndex];
+
+
   if (surveyComplete && !identityCompleted){
     return (
       <div className="App">
@@ -360,9 +363,12 @@ const handleCategorySelection = (category) => {
             <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
           </div>
           <div className="question-block">
-            <h2 className="Identity Questions">yp</h2>
+            <h2 className="category-name">Identity Questions</h2>
+            <p className="subcategory-question">
+              Would you like to answer some identity based questions to improve matchmaking results
+            </p>
             <button onClick={() => handleIdentityQuestions(true)}>Yes</button>
-            <button onClick={() => handleIdentityQuestions(false)}>No</button>
+            <button onClick={() => handleIdentityQuestions(false)}>No, take me to results</button>
           </div>
         </header>
       </div>
@@ -415,15 +421,12 @@ const handleCategorySelection = (category) => {
             ))}
           </div>
         </div>
-
-
          <button 
-  className="start-quiz-button"
-  onClick={handleStartQuiz} 
-  disabled={selectedCategories.length === 0}
->
-  Start Quiz
-</button>
+            className="start-quiz-button"
+            onClick={handleStartQuiz} 
+            disabled={selectedCategories.length === 0}>
+            Start Quiz
+        </button>
 
         </header>
       </div>
@@ -433,7 +436,7 @@ const handleCategorySelection = (category) => {
   const categoryName = selectedCategories[currentCategoryIndex];
   const questionsForCategory = CATEGORY_QUESTIONS[categoryName];
   const currentQuestion = questionsForCategory[currentQuestionIndex];
-
+  console.log(currentQuestion[1]);
   return (
     <div className="App">
       <header className="App-header">
@@ -443,6 +446,7 @@ const handleCategorySelection = (category) => {
         <div className="question-block">
           <h3 className="category-name">{categoryName}</h3>
           <h2 className="subcategory-question">{currentQuestion[0]}</h2>
+          
           <button onClick={() => handleSubQuestionAnswer(currentQuestion[1], true)}>Yes</button>
           <button onClick={() => handleSubQuestionAnswer(currentQuestion[1], false)}>No</button>
         </div>
