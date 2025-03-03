@@ -54,12 +54,6 @@ const IDENTITY_QUESTIONS = {
     ["What religion do you identify the most with?"]
   ]
 }
-for (const category in IDENTITY_QUESTIONS) {
-  console.log(`${category}:`);
-  IDENTITY_QUESTIONS[category].forEach((question, index) => {
-    console.log(`  ${index + 1}. ${question[0]}`);
-  });
-}
 
 
 const CATEGORY_QUESTIONS = {
@@ -152,7 +146,7 @@ function calcUserTagScores(userTags) {
 
 function buildClubVectorFromRow(row) { // This function takes a row of data from the CSV file and returns a vector of tag scores for that club for cosine simiarity
   const vector = []; // Initialize an empty list to store the tag scores
-  for (let tagId = 1; tagId <= 40; tagId++) { // Iterate over each tag number from 1 to 40
+  for (let tagId = 0; tagId <= 39; tagId++) { // Iterate over each tag number from 1 to 40
     vector.push(parseFloat(row[tagId])); // Add the tag score for the current tag to the vector
   }
   return vector; // Return the vector of tag scores
@@ -176,7 +170,7 @@ function rankClubsBySimilarity(userVector, clubData) {
   for (let i = 1; i < clubData.length; i++) {
     const row = clubData[i];
     if (row.length < 41) continue;
-    const clubName = row[0];
+    const clubName = row[40];
     const clubVector = buildClubVectorFromRow(row);
     const similarity = cosineSimilarity(userVector, clubVector);
     results.push({ clubName, similarity });
@@ -355,9 +349,9 @@ const handleCategorySelection = (category) => {
     setSurveyComplete(true);
   };
 
-  const questionsForIdentity = IDENTITY_QUESTIONS[0][0];
-  console.log("identity:" + IDENTITY_QUESTIONS[0][0])
-  const currentIdentityQuestion = questionsForIdentity[0];
+  // const questionsForIdentity = IDENTITY_QUESTIONS[0][0];
+  // console.log("identity:" + IDENTITY_QUESTIONS[0][0])
+  // const currentIdentityQuestion = questionsForIdentity[0];
   if (surveyComplete && !identityCompleted){
     return (
       <div className="App">
@@ -366,7 +360,7 @@ const handleCategorySelection = (category) => {
             <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
           </div>
           <div className="question-block">
-            <h2 className="Identity Questions">{currentIdentityQuestion[0]}</h2>
+            <h2 className="Identity Questions">yp</h2>
             <button onClick={() => handleIdentityQuestions(true)}>Yes</button>
             <button onClick={() => handleIdentityQuestions(false)}>No</button>
           </div>
@@ -436,29 +430,6 @@ const handleCategorySelection = (category) => {
     );
   }
 
-
-  // const categoryName = selectedCategories[currentCategoryIndex];
-  // //const interest = categoryInterest[categoryName];
-  // const interest = selectedCategories[categoryName];
-  // if (interest === undefined) {
-  //   return (
-  //     <div className="App">
-  //       <header className="App-header">
-  //         <div className="logo-title-container">
-  //           <h1 className="matchmaker-title">Cal Poly<br />Matchmaker</h1>
-  //         </div>
-  //         <div className="question-block">
-  //           <button onClick={() => handleCategoryInterestClick()}>Start Category</button>
-  //           {/* <h2 className="major-question">Are you interested in {categoryName}?</h2>
-  //           <button onClick={() => handleCategoryInterestClick("yes")}>Yes</button>
-  //           <button onClick={() => handleCategoryInterestClick("maybe")}>Maybe</button>
-  //           <button onClick={() => handleCategoryInterestClick("no")}>No</button> */}
-            
-  //         </div>
-  //       </header>
-  //     </div>
-  //   );
-  // }
   const categoryName = selectedCategories[currentCategoryIndex];
   const questionsForCategory = CATEGORY_QUESTIONS[categoryName];
   const currentQuestion = questionsForCategory[currentQuestionIndex];
