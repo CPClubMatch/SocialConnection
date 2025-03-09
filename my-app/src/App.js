@@ -49,7 +49,7 @@ const ALL_TAGS = {
 const IDENTITY_QUESTIONS = {
     "Identity" : [
     ["What gender do you identify the most with?"],
-    ["What race do you inentify the most with?"],
+    ["What race do you identify the most with?"],
     ["What is your major?"],
     ["What religion do you identify the most with?"]
   ]
@@ -199,6 +199,14 @@ function App() {
 
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [identityCompleted, setIdentityCompleted] = useState(false);
+  const [userResponsesIdentity, setUserResponsesIdentity] = useState({
+    race: "",
+    gender: "",
+    major: "",
+    religion: "",
+  });
+  const [showIdentityQuestions, setShowIdentityQuestions] = useState(false);
+
 
   // ------------------ ONLY CHANGE: Automatically load local CSV ------------------ //
   useEffect(() => {
@@ -232,16 +240,6 @@ const handleCategorySelection = (category) => {
   });
 };
   
-// not needed in the new version
-  // const handleCategoryInterestClick = (interest) => {
-  //   const thisCategory = categoryKeys[currentCategoryIndex];
-  //   setCategoryInterest((prev) => ({ ...prev, [thisCategory]: interest }));
-  //   if (interest === "no") {
-  //     goToNextCategory();
-  //   } else {
-  //     setCurrentQuestionIndex(0);
-  //   }
-  // };
 
   const handleCategoryInterestClick = () => {
       setCurrentQuestionIndex(0);
@@ -256,14 +254,6 @@ const handleCategorySelection = (category) => {
     }
   };
 
-  // const goToNextCategory = () => {
-  //   if (currentCategoryIndex < categoryKeys.length - 1) {
-  //     setCurrentCategoryIndex(currentCategoryIndex + 1);
-  //     setCurrentQuestionIndex(0);
-  //   } else {
-  //     finalizeScoresAndComputeClubs();
-  //   }
-  // };
 
   const handleSubQuestionAnswer = (tagIds, answeredYes) => {
     const numericAnswer = answeredYes ? 1 : 0;
@@ -302,22 +292,42 @@ const handleCategorySelection = (category) => {
   const handleIdentityQuestions = (answeredYes) => {
     const numericAnswer = answeredYes ? 1 : 0;
     if (numericAnswer){
+      setShowIdentityQuestions(true);
       setCurrentQuestionIndex(0);
-      doIdentityQuestions();
+      //doIdentityQuestions();
     }else {
       setIdentityCompleted(true);
     }
   };
 
   const doIdentityQuestions = () => {
-    if (currentQuestionIndex === IDENTITY_QUESTIONS[1].length - 1) {
+    console.log("Starting identity question:", currentQuestionIndex);
+  
+    // Check if all identity questions have been answered
+    //IDENTITY_QUESTIONS["Identity"].length is the number of questions since its a dict which maps key to list of list
+    if (currentQuestionIndex >= IDENTITY_QUESTIONS["Identity"].length - 1) {
+      console.log("All identity questions answered. Completing identity section.");
       setIdentityCompleted(true);
+      return;
     }
-
-    else {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    }
+  
+    // Move to the next question
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
+  
+  const handleIdentityUser = (value) => {
+    console.log("Recording identity answer:", value);
+  
+    setUserResponsesIdentity((prevResponses) => ({
+      ...prevResponses,
+      [currentQuestionIndex]: value, // Store answers using question index
+    }));
+  
+    // Move to the next question
+    doIdentityQuestions();
+  };
+  
+
   
 
   const renameCategoryToNumber = (categoryName) => {
@@ -352,7 +362,7 @@ const handleCategorySelection = (category) => {
   };
 
   const questionsForIdentity = IDENTITY_QUESTIONS["Identity"];
-  const currentIdentityQuestion = questionsForIdentity[currentCategoryIndex];
+  const currentIdentityQuestion = questionsForIdentity[currentQuestionIndex];
 
 
   if (surveyComplete && !identityCompleted){
@@ -364,11 +374,24 @@ const handleCategorySelection = (category) => {
           </div>
           <div className="question-block">
             <h2 className="category-name">Identity Questions</h2>
-            <p className="subcategory-question">
-              Would you like to answer some identity based questions to improve matchmaking results
-            </p>
-            <button onClick={() => handleIdentityQuestions(true)}>Yes</button>
-            <button onClick={() => handleIdentityQuestions(false)}>No, take me to results</button>
+            {!showIdentityQuestions && (
+              <div>
+                <p className="subcategory-question">
+                  Would you like to answer some identity based questions to improve matchmaking results
+                </p>
+                <button onClick={() => handleIdentityQuestions(true)}>Yes</button>
+                <button onClick={() => handleIdentityQuestions(false)}>No, take me to results</button>
+              </div>
+            )}
+            {showIdentityQuestions && (
+              <div>
+                <h3 className="subcategory-question">{currentIdentityQuestion}</h3>
+                
+                <button onClick={() => handleIdentityUser(1)}>Yes</button>
+                <button onClick={() => handleIdentityUser(0)}>No</button>
+            </div>
+            )}
+            
           </div>
         </header>
       </div>
@@ -436,7 +459,6 @@ const handleCategorySelection = (category) => {
   const categoryName = selectedCategories[currentCategoryIndex];
   const questionsForCategory = CATEGORY_QUESTIONS[categoryName];
   const currentQuestion = questionsForCategory[currentQuestionIndex];
-  console.log(currentQuestion[1]);
   return (
     <div className="App">
       <header className="App-header">
