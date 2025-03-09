@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
+import Dropdown from './components/Dropdown';
+
 import './App.css';
 
 // -------------------- 1. DEFINE TAGS AND BROAD CATEGORIES --------------------
@@ -46,6 +48,32 @@ const ALL_TAGS = {
   40: ["Culinary Arts", 40]
 };
 
+//No idea how this works but its just styling to make it look more visible, can change later
+const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    backgroundColor: "#f0f8ff", // Light blue background
+    borderColor: state.isFocused ? "#2684FF" : "#ccc",
+    boxShadow: state.isFocused ? "0 0 0 1px #2684FF" : null,
+    "&:hover": {
+      borderColor: state.isFocused ? "#2684FF" : "#00838f",
+    },
+  }),
+  menu: (provided) => ({
+    ...provided,
+    maxHeight: '300px', // Allows more options to be visible (with scrolling if needed)
+    overflowY: 'auto',
+    zIndex: 9999,
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isFocused ? "#2684FF" : "#fff",
+    color: state.isFocused ? "#fff" : "#333",
+    padding: 10,
+  }),
+};
+
+
 const IDENTITY_QUESTIONS = {
     "Identity" : [
     ["What gender do you identify the most with?"],
@@ -54,6 +82,37 @@ const IDENTITY_QUESTIONS = {
     ["What religion do you identify the most with?"]
   ]
 }
+
+const IDENTITY_OPTIONS = {
+  "What gender do you identify the most with?": [
+    { value: 'male', label: 'Male' },
+    { value: 'female', label: 'Female' },
+    { value: 'nonbinary', label: 'Non-binary' },
+    { value: 'other', label: 'Other' }
+  ],
+  "What race do you identify the most with?": [
+    { value: 'asian', label: 'Asian' },
+    { value: 'black', label: 'Black' },
+    { value: 'hispanic', label: 'Hispanic' },
+    { value: 'white', label: 'White' },
+    { value: 'other', label: 'Other' }
+  ],
+  "What is your major?": [
+    { value: 'engineering', label: 'Engineering' },
+    { value: 'business', label: 'Business' },
+    { value: 'arts', label: 'Arts' },
+    { value: 'science', label: 'Science' },
+    { value: 'other', label: 'other' }
+  ],
+  "What religion do you identify the most with?": [
+    { value: 'christianity', label: 'Christianity' },
+    { value: 'islam', label: 'Islam' },
+    { value: 'hinduism', label: 'Hinduism' },
+    { value: 'buddhism', label: 'Buddhism' },
+    { value: 'other', label: 'Other' }
+  ]
+};
+
 
 
 const CATEGORY_QUESTIONS = {
@@ -199,12 +258,8 @@ function App() {
 
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [identityCompleted, setIdentityCompleted] = useState(false);
-  const [userResponsesIdentity, setUserResponsesIdentity] = useState({
-    race: "",
-    gender: "",
-    major: "",
-    religion: "",
-  });
+  const [userResponsesIdentity, setUserResponsesIdentity] = useState({});
+  const [selectedIdentityOption, setSelectedIdentityOption] = useState(null);
   const [showIdentityQuestions, setShowIdentityQuestions] = useState(false);
 
 
@@ -219,6 +274,10 @@ function App() {
         setClubData(parsed.data);
       });
   }, []);
+
+  useEffect(() => {
+    setSelectedIdentityOption(null);
+  }, [currentQuestionIndex]);
   // ------------------------------------------------------------------------------ //
 
   const handleStartQuiz = () => {
@@ -288,6 +347,22 @@ const handleCategorySelection = (category) => {
     return tempUserTags;
   };
 
+  const handleIdentityNext = () => {
+    const value = selectedIdentityOption ? selectedIdentityOption.value : null;
+    console.log("Recording identity answer:", value);
+    setUserResponsesIdentity((prevResponses) => ({
+      ...prevResponses,
+      [currentQuestionIndex]: value,
+    }));
+
+    if (currentQuestionIndex >= questionsForIdentity.length - 1) {
+      console.log("All identity questions answered");
+      setIdentityCompleted(true);
+    } else {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    }
+  };
+
 
   const handleIdentityQuestions = (answeredYes) => {
     const numericAnswer = answeredYes ? 1 : 0;
@@ -300,34 +375,7 @@ const handleCategorySelection = (category) => {
     }
   };
 
-  const doIdentityQuestions = () => {
-    console.log("Starting identity question:", currentQuestionIndex);
   
-    // Check if all identity questions have been answered
-    //IDENTITY_QUESTIONS["Identity"].length is the number of questions since its a dict which maps key to list of list
-    if (currentQuestionIndex >= IDENTITY_QUESTIONS["Identity"].length - 1) {
-      console.log("All identity questions answered. Completing identity section.");
-      setIdentityCompleted(true);
-      return;
-    }
-  
-    // Move to the next question
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-  };
-  
-  const handleIdentityUser = (value) => {
-    console.log("Recording identity answer:", value);
-  
-    setUserResponsesIdentity((prevResponses) => ({
-      ...prevResponses,
-      [currentQuestionIndex]: value, // Store answers using question index
-    }));
-  
-    // Move to the next question
-    doIdentityQuestions();
-  };
-  
-
   
 
   const renameCategoryToNumber = (categoryName) => {
@@ -386,11 +434,18 @@ const handleCategorySelection = (category) => {
             {showIdentityQuestions && (
               <div>
                 <h3 className="subcategory-question">{currentIdentityQuestion}</h3>
-                
-                <button onClick={() => handleIdentityUser(1)}>Yes</button>
-                <button onClick={() => handleIdentityUser(0)}>No</button>
-            </div>
+                <Dropdown
+                  options={IDENTITY_OPTIONS[currentIdentityQuestion]}
+                  onChange={(option) => setSelectedIdentityOption(option)}
+                  value={selectedIdentityOption}
+                  placeholder="Select an option..."
+                  styles={customStyles}
+                  isSearchable
+                />
+                <button onClick={handleIdentityNext}>Next Question</button>
+              </div>
             )}
+
             
           </div>
         </header>
